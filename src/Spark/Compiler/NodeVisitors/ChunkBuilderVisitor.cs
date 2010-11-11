@@ -16,6 +16,8 @@
 // </copyright>
 // <author>Louis DeJardin</author>
 // <author>maxild</author>
+// <author>Robert Greyling</author>
+// <author>James Foster</author>
 // <author>John Gietzen</author>
 //-------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 //-------------------------------------------------------------------------
-// <copyright file="Node.cs">
+// <copyright file="MarkupGrammar.cs">
 // Copyright 2008-2010 Louis DeJardin - http://whereslou.com
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
