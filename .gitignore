@@ -16,6 +16,8 @@ obj/
 *.user
 *.ncb
 _ReSharper.*
+*.Cache
+*.cache
 
 # Ignore all MonoDevelop generated files.
 *.userprefs
