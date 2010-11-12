@@ -35,6 +35,5 @@ namespace Spark
         public const string RenderNamespace = "http://sparkviewengine.com/render/";
 
         public const string XIncludeNamespace = "http://www.w3.org/2001/XInclude";
-
     }
 }

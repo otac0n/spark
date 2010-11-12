@@ -29,9 +29,13 @@ namespace Spark
         public Guid ViewId { get { return Compiler.GeneratedViewId; } }
 
         public SparkViewDescriptor Descriptor { get; set; }
+
         public ViewLoader Loader { get; set; }
+
         public ViewCompiler Compiler { get; set; }
+
         public IViewActivator Activator { get; set; }
+
         public ISparkLanguageFactory LanguageFactory { get; set; }
 
         public string SourceCode

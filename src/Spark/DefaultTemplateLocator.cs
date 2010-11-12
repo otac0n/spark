@@ -33,10 +33,12 @@ namespace Spark
             {
                 return Result(viewFolder, "Layouts\\" + masterName + ".spark");
             }
+
             if (viewFolder.HasView("Shared\\" + masterName + ".spark"))
             {
                 return Result(viewFolder, "Shared\\" + masterName + ".spark");
             }
+            
             return new LocateResult
                    {
                        SearchedLocations = new[]
@@ -46,7 +48,6 @@ namespace Spark
                                            }
                    };
         }
-
 
         private static LocateResult Result(IViewFolder viewFolder, string path)
         {

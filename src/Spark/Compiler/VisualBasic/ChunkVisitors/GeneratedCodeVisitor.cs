@@ -39,7 +39,6 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
             _scope = new Scope(new Scope(null) { Variables = globalSymbols });
         }
 
-        
         private SourceWriter CodeIndent(Chunk chunk)
         {
             if (_source.AdjustDebugSymbols)
@@ -89,7 +88,9 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                 Variables = new Dictionary<string, object>();
                 Prior = prior;
             }
+
             public Dictionary<string, object> Variables { get; set; }
+
             public Scope Prior { get; private set; }
         }
 
@@ -99,14 +100,17 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
         {
             _scope = new Scope(_scope);
         }
+
         void PopScope()
         {
             _scope = _scope.Prior;
         }
+
         void DeclareVariable(string name)
         {
             _scope.Variables.Add(name, null);
         }
+
         bool IsVariableDeclared(string name)
         {
             var scan = _scope;
@@ -116,9 +120,9 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                     return true;
                 scan = scan.Prior;
             }
+
             return false;
         }
-
 
         protected override void Visit(SendLiteralChunk chunk)
         {
@@ -158,6 +162,7 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                         .WriteLine("}\")")
                         .RemoveIndent();
                 }
+
                 _source.WriteLine("End Try");
             }
             else
@@ -187,7 +192,6 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
 
         protected override void Visit(MacroChunk chunk)
         {
-
         }
 
         protected override void Visit(CodeStatementChunk chunk)
@@ -227,10 +231,12 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                     .Write(" As ")
                     .WriteCode(type);
             }
+
             if (!Snippets.IsNullOrEmpty(value))
             {
                 _source.Write(" = ").WriteCode(value);
             }
+
             _source.WriteLine();
             CodeDefault();
         }
@@ -240,12 +246,12 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
             //no-op
         }
 
-
         static bool IsInOrAs(string part)
         {
             return string.Equals(part, "In", StringComparison.InvariantCultureIgnoreCase) ||
                    string.Equals(part, "As", StringComparison.InvariantCultureIgnoreCase);
         }
+
         static bool IsIn(string part)
         {
             return string.Equals(part, "In", StringComparison.InvariantCultureIgnoreCase);
@@ -294,11 +300,13 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                     DeclareVariable(variableName + "Index");
                     _source.WriteLine("Dim {0}Index As Integer = 0", variableName);
                 }
+
                 if (autoIsFirst.Detected)
                 {
                     DeclareVariable(variableName + "IsFirst");
                     _source.WriteLine("Dim {0}IsFirst As Boolean = True", variableName);
                 }
+
                 if (autoCount.Detected)
                 {
                     DeclareVariable(variableName + "Count");
@@ -322,6 +330,7 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                     DeclareVariable(variableName + "IsLast");
                     _source.WriteLine("Dim {0}IsLast As Boolean = ({0}Index = {0}Count - 1)", variableName);
                 }
+
                 CodeDefault();
 
                 Accept(chunk.Body);
@@ -360,7 +369,6 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
             CodeDefault();
         }
 
-
         protected override void Visit(ContentChunk chunk)
         {
             CodeIndent(chunk)
@@ -378,7 +386,6 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
 
         protected override void Visit(UseImportChunk chunk)
         {
-
         }
 
         protected override void Visit(ContentSetChunk chunk)
@@ -405,6 +412,7 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                     format = "{0} = Output.ToString()";
                     break;
             }
+
             _source.WriteFormat(format, chunk.Variable).WriteLine();
 
             PopScope();
@@ -436,20 +444,16 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
             _source.WriteLine("End If");
         }
 
-
         protected override void Visit(ViewDataChunk chunk)
         {
-
         }
 
         protected override void Visit(UseNamespaceChunk chunk)
         {
-
         }
 
         protected override void Visit(UseAssemblyChunk chunk)
         {
-
         }
 
         protected override void Visit(ExtensionChunk chunk)
@@ -487,17 +491,14 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
             _source
                 .RemoveIndent()
                 .EscrowLine("End If");
-
         }
 
         protected override void Visit(ViewDataModelChunk chunk)
         {
-
         }
 
         protected override void Visit(PageBaseTypeChunk chunk)
         {
         }
     }
-
 }

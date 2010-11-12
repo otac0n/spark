@@ -31,7 +31,6 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
     {
         public abstract Snippets Process(Chunk chunk, Snippets code);
 
-        
         protected override void Visit(GlobalVariableChunk chunk)
         {
             chunk.Value = Process(chunk, chunk.Value);

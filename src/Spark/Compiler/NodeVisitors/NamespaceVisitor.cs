@@ -47,7 +47,9 @@ namespace Spark.Compiler.NodeVisitors
         public class Frame
         {
             public IDictionary<string, string> Nametable { get; set; }
+
             public string ElementName { get; set; }
+
             public int ElementNameDepth { get; set; }
         }
 
@@ -95,6 +97,7 @@ namespace Spark.Compiler.NodeVisitors
                 if (FrameData.ElementNameDepth-- == 0)
                     PopFrame();
             }
+
             base.Visit(node);
         }
 

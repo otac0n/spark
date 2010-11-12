@@ -28,7 +28,9 @@ namespace Spark.Compiler.NodeVisitors
     public class Frame<FrameData>
     {
         public Frame<FrameData> PriorFrame { get; set; }
+
         public IList<Node> Nodes { get; set; }
+
         public FrameData Data { get; set; }
     }
 

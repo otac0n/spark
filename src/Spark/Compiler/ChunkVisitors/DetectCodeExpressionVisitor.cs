@@ -33,6 +33,7 @@ namespace Spark.Compiler.ChunkVisitors
         public class Entry
         {
             public string Expression { get; set; }
+
             public bool Detected { get; set; }
         }
 
@@ -69,14 +70,12 @@ namespace Spark.Compiler.ChunkVisitors
 
         protected override void Visit(UseImportChunk chunk)
         {
-            
         }
 
         protected override void Visit(ContentSetChunk chunk)
         {
             Accept(chunk.Body);
         }
-
 
         protected override void Visit(RenderPartialChunk chunk)
         {
@@ -102,6 +101,7 @@ namespace Spark.Compiler.ChunkVisitors
                 Accept(chunk.Default);
                 ExitRenderPartial(outer);
             }
+
             EnterRenderPartial(outer);
         }
 
@@ -141,7 +141,6 @@ namespace Spark.Compiler.ChunkVisitors
         {
             //no-op
         }
-
 
         protected override void Visit(AssignVariableChunk chunk)
         {

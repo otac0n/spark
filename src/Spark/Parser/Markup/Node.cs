@@ -37,6 +37,7 @@ namespace Spark.Parser.Markup
         {
             Text = new string(text.ToArray());
         }
+
         public TextNode(string text)
         {
             Text = text;
@@ -61,10 +62,12 @@ namespace Spark.Parser.Markup
         {
             Text = new string(text.ToArray());
         }
+
         public CommentNode(string text)
         {
             Text = text;
         }
+
         public string Text { get; set; }
     }
 
@@ -76,6 +79,7 @@ namespace Spark.Parser.Markup
             Namespace = "";
             Nodes = nodes;
         }
+
         public AttributeNode(string name, string value)
         {
             Name = name;
@@ -84,7 +88,9 @@ namespace Spark.Parser.Markup
         }
 
         public string Name;
+
         public string Namespace { get; set; }
+
         public IList<Node> Nodes;
 
         public string Value
@@ -103,10 +109,10 @@ namespace Spark.Parser.Markup
                     else if (node is ConditionNode)
                         sb.Append("?{").Append(((ConditionNode)node).Code).Append('}');
                 }
+
                 return sb.ToString();
             }
         }
-
     }
 
     public class ConditionNode : Node
@@ -127,6 +133,7 @@ namespace Spark.Parser.Markup
         {
             Code = new Snippets(snippets);
         }
+
         public ConditionNode(Snippets snippets)
             : this()
         {
@@ -134,6 +141,7 @@ namespace Spark.Parser.Markup
         }
 
         public Snippets Code { get; set; }
+
         public IList<Node> Nodes { get; set; }
     }
 
@@ -143,17 +151,21 @@ namespace Spark.Parser.Markup
             : this(new Snippets(code))
         {
         }
+
         public ExpressionNode(IEnumerable<Snippet> code) :
             this(new Snippets(code))
         {
         }
+
         public ExpressionNode(Snippets code)
         {
             Code = code;
         }
 
         public Snippets Code { get; set; }
+
         public bool SilentNulls { get; set; }
+
         public bool AutomaticEncoding { get; set; }
     }
 
@@ -163,15 +175,16 @@ namespace Spark.Parser.Markup
             this(new Snippets(code))
         {
         }
+        
         public StatementNode(IEnumerable<Snippet> snippets) :
             this(new Snippets(snippets))
         {
         }
+
         public StatementNode(Snippets code)
         {
             Code = code;
         }
-
 
         public Snippets Code { get; set; }
     }
@@ -200,6 +213,7 @@ namespace Spark.Parser.Markup
     public class ProcessingInstructionNode : Node
     {
         public string Name { get; set; }
+
         public string Body { get; set; }
     }
 
@@ -220,9 +234,13 @@ namespace Spark.Parser.Markup
         }
 
         public string Name { get; set; }
+
         public string Namespace { get; set; }
+
         public readonly IList<AttributeNode> Attributes;
+
         public bool IsEmptyElement { get; set; }
+
         public string PreceedingWhitespace { get; set; }
     }
 
@@ -240,7 +258,9 @@ namespace Spark.Parser.Markup
         }
 
         public string Name { get; set; }
+
         public string Namespace { get; set; }
+
         public string PreceedingWhitespace { get; set; }
     }
 
@@ -265,7 +285,9 @@ namespace Spark.Parser.Markup
         }
 
         public ElementNode Element;
+
         public ISparkExtension Extension { get; set; }
+
         public IList<Node> Body = new List<Node>();
     }
 }

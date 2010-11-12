@@ -43,6 +43,7 @@ namespace Spark.Utilities
                 parts[index * 2] = unitSeperator;
                 parts[index * 2 + 1] = key[index];
             }
+
             return string.Concat(parts);
         }
     }

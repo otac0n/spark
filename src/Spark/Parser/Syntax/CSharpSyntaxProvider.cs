@@ -63,6 +63,7 @@ namespace Spark.Parser.Syntax
             {
                 ThrowParseException(context.ViewPath, position, nodes.Rest);
             }
+
             context.Paint = nodes.Rest.GetPaint();
 
             var chunkBuilder = new ChunkBuilderVisitor(context);

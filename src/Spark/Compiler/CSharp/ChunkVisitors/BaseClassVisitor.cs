@@ -27,6 +27,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
     public class BaseClassVisitor : ChunkVisitor
     {
         public Snippets BaseClass { get; set; }
+
         public Snippets TModel { get; set; }
 
         bool _encounteredBaseClass;
@@ -59,6 +60,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
                 throw new CompilerException(string.Format("Only one viewdata model can be declared. {0} != {1}", TModel,
                                                           chunk.TModel));
             }
+
             TModel = chunk.TModel;
             _encounteredTModel = true;
         }
@@ -70,6 +72,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
                 throw new CompilerException(string.Format("Only one pageBaseType can be declared. {0} != {1}", BaseClass,
                                                           chunk.BaseClass));
             }
+
             BaseClass = chunk.BaseClass;
             _encounteredBaseClass = true;
         }

@@ -34,7 +34,6 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
 
         readonly Stack<string> _noncyclic = new Stack<string>();
 
-
         public UsingNamespaceVisitor(SourceWriter output)
         {
             _source = output;
@@ -46,11 +45,11 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
         {
             UsingNamespace(chunk.Namespace);
         }
+
         protected override void Visit(UseAssemblyChunk chunk)
         {
             UsingAssembly(chunk.Assembly);
         }
-
 
         protected override void Visit(ExtensionChunk chunk)
         {

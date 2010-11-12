@@ -32,16 +32,13 @@ namespace Spark.Parser.Code
             Func<IList<char>, string> bs = hit => new string(hit.ToArray());
             Func<IList<string>, string> js = hit => string.Concat(hit.ToArray());
 
-
             var escapeSequence = Ch('\\').And(Ch(c => true)).Build(hit => "\\" + hit.Down);
-
 
             var quotHunks =
                 Rep1(ChNot('\"', '\\')).Build(bs)
                 .Or(escapeSequence);
 
             var quotStringLiteral = Snip(Ch('\"').And(Rep(quotHunks)).And(Ch('\"')), hit => "\"" + js(hit.Left.Down) + "\"");
-
 
             var quotVerbatimPiece =
                 Ch("\"\"").Or(ChNot('\"').Build(ch => new string(ch, 1)));
@@ -134,7 +131,6 @@ namespace Spark.Parser.Code
                                                    .Concat(new Snippets(")"))
                                                    .ToList());
 
-
             var codeStretch = Snip(Rep1(
                 Swap(Ch("[["), "<")
                 .Or(Swap(Ch("]]"), ">"))
@@ -142,7 +138,6 @@ namespace Spark.Parser.Code
                 .Or(Snip(ChNot('\"', '\'', '{', '}')))
                 .Unless(identifier.Or(keyword).Or(SpecialCharCast))
                 .Unless(Ch("%>").Or(Ch("@\"")).Or(Ch("@'")).Or(Ch("//")).Or(Ch("/*")))));
-
 
             // braced ::= '{' + terms + '}'
             var braced = Snip(Snip(Ch('{')).And((ParseAction<IList<Snippet>>)FnTerms).And(Snip(Ch('}'))));
@@ -159,9 +154,7 @@ namespace Spark.Parser.Code
                 .Or(multiLineComment)))
               .Or(EmptySnip());
 
-
             Expression = ExpressionTerms.Build(hit => new Snippets(hit));
-
 
             var statementPiece =
                 Swap(Ch("[["), "<")
@@ -183,7 +176,6 @@ namespace Spark.Parser.Code
                 .Or(oneLineComment)
                 .Or(multiLineComment)));
 
-
             // Statement2 ::= (dquot | aquot | statement2Stretch | specialCharCast)*
             Statement2 = Snip(Rep(
                 stringLiteral
@@ -192,8 +184,6 @@ namespace Spark.Parser.Code
                 .Or(oneLineComment)
                 .Or(multiLineComment)));
         }
-
-
 
         static ParseAction<IList<Snippet>> Snip(ParseAction<Chain<Chain<IList<Snippet>, IList<Snippet>>, IList<Snippet>>> parser)
         {
@@ -253,6 +243,7 @@ namespace Spark.Parser.Code
                 return new ParseResult<IList<Snippet>>(result.Rest, new[] { snippet });
             };
         }
+
         static ParseAction<IList<Snippet>> Snip(ParseAction<IList<string>> parser)
         {
             return position =>
@@ -263,10 +254,12 @@ namespace Spark.Parser.Code
                 return new ParseResult<IList<Snippet>>(result.Rest, new[] { snippet });
             };
         }
+
         static ParseAction<IList<Snippet>> Snip(ParseAction<IList<Snippet>> parser)
         {
             return parser;
         }
+
         static ParseAction<IList<Snippet>> Snip(ParseAction<IList<IList<Snippet>>> parser)
         {
             return position =>
@@ -276,6 +269,7 @@ namespace Spark.Parser.Code
                 return new ParseResult<IList<Snippet>>(result.Rest, result.Value.SelectMany(s => s).ToArray());
             };
         }
+
         static ParseAction<IList<Snippet>> EmptySnip()
         {
             return position => new ParseResult<IList<Snippet>>(position, new[] { new Snippet { Value = "", Begin = position, End = position } });
@@ -291,6 +285,7 @@ namespace Spark.Parser.Code
                 return new ParseResult<IList<Snippet>>(result.Rest, new[] { snippet });
             };
         }
+
         static ParseAction<IList<Snippet>> Swap<TValue>(ParseAction<TValue> parser, Func<TValue, string> replacement)
         {
             return position =>
@@ -317,27 +312,37 @@ namespace Spark.Parser.Code
 
         protected static ParseAction<TValue> TkTagDelim<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlTagDelimiter, parser); }
+
         protected static ParseAction<TValue> TkEleNam<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlElementName, parser); }
+
         protected static ParseAction<TValue> TkAttNam<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlAttributeName, parser); }
+
         protected static ParseAction<TValue> TkAttDelim<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlOperator, parser); }
+
         protected static ParseAction<TValue> TkAttQuo<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlAttributeValue, parser); }
+
         protected static ParseAction<TValue> TkAttVal<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlAttributeValue, parser); }
+
         protected static ParseAction<TValue> TkEntity<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlEntity, parser); }
+
         protected static ParseAction<TValue> TkComm<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlComment, parser); }
+
         protected static ParseAction<TValue> TkCDATA<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.PlainText, parser); }
 
         protected static ParseAction<TValue> TkAspxCode<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.HtmlServerSideScript, parser); }
+
         protected static ParseAction<TValue> TkCode<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.SparkDelimiter, parser); }
+
         protected static ParseAction<TValue> TkStr<TValue>(ParseAction<TValue> parser)
         { return Paint(SparkTokenType.String, parser); }
     }

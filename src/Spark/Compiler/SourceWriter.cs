@@ -44,9 +44,13 @@ namespace Spark.Compiler
         }
 
         public int Indentation { get; set; }
+
         public bool StartOfLine { get; set; }
+
         public IList<SourceMapping> Mappings { get; set; }
+
         public static bool AdjustDebugSymbolsDefault { get; set; }
+
         public bool AdjustDebugSymbols { get; set; }
 
         public int Length
@@ -78,6 +82,7 @@ namespace Spark.Compiler
                 _writer.Write(new string(' ', size));
                 StartOfLine = false;
             }
+
             return this;
         }
 
@@ -93,9 +98,9 @@ namespace Spark.Compiler
                 _writer.Write(_escrow);
                 _escrow = null;
             }
+
             Indent();
         }
-
 
         public SourceWriter Write(string value)
         {
@@ -103,7 +108,6 @@ namespace Spark.Compiler
             _writer.Write(value);
             return this;
         }
-
 
         public SourceWriter WriteFormat(string format, params object[] args)
         {
@@ -132,10 +136,12 @@ namespace Spark.Compiler
                     };
                     continue;
                 }
+
                 if (prior != null)
                     compacted.Add(prior);
                 prior = snippet;
             }
+
             if (prior != null)
                 compacted.Add(prior);
 
@@ -151,6 +157,7 @@ namespace Spark.Compiler
                         OutputEnd = Length + snippet.Value.Length
                     });
                 }
+
                 Write(snippet.Value);
             }
 
@@ -167,7 +174,6 @@ namespace Spark.Compiler
                 return false;
             return true;
         }
-
 
         public SourceWriter WriteLine()
         {
@@ -186,8 +192,6 @@ namespace Spark.Compiler
         {
             return WriteLine(string.Format(format, args));
         }
-
-
 
         public SourceWriter WriteDirective(string line)
         {
@@ -223,6 +227,5 @@ namespace Spark.Compiler
             // for backwards compatability with extensions
             return _writer.GetStringBuilder();
         }
-
     }
 }

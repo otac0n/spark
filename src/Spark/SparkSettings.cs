@@ -40,32 +40,42 @@ namespace Spark
         }
 
         public bool Debug { get; set; }
+
 		public NullBehaviour NullBehaviour { get; set; }
+
         public bool AutomaticEncoding { get; set; }
+
         public string StatementMarker { get; set; }
+
         public string Prefix { get; set; }
+
         public string PageBaseType { get; set; }
+
         public LanguageType DefaultLanguage { get; set; }
 
         private readonly IList<string> _useNamespaces;
+        
         public IEnumerable<string> UseNamespaces
         {
             get { return _useNamespaces; }
         }
 
         private readonly IList<string> _useAssemblies;
+        
         public IEnumerable<string> UseAssemblies
         {
             get { return _useAssemblies; }
         }
 
         private readonly IList<IResourceMapping> _resourceMappings;
+
         public IEnumerable<IResourceMapping> ResourceMappings
         {
             get { return _resourceMappings; }
         }
 
         private readonly IList<IViewFolderSettings> _viewFolders;
+
         public IEnumerable<IViewFolderSettings> ViewFolders
         {
             get { return _viewFolders; }

@@ -78,6 +78,7 @@ namespace Spark.Parser.Syntax
                 directoryPath = Path.GetDirectoryName(directoryPath);
                 relativePath = relativePath.Substring(3);
             }
+
             context.ViewPath = Path.Combine(directoryPath, relativePath);
 
             var sourceContext = CreateSourceContext(context.ViewPath, context.ViewFolder);
@@ -94,13 +95,13 @@ namespace Spark.Parser.Syntax
                     return new[] { new TextNode(sourceContext.Content) };
             }
 
-
             var position = new Position(sourceContext);
             var result = _grammar.Nodes(position);
             if (result.Rest.PotentialLength() != 0)
             {
                 ThrowParseException(context.ViewPath, position, result.Rest);
             }
+
             context.Paint = context.Paint.Union(result.Rest.GetPaint());
 
             var namespaceVisitor = new NamespaceVisitor(context);
@@ -131,7 +132,6 @@ namespace Spark.Parser.Syntax
             });
 
             return snippets;
-
         }
 
         private IList<INodeVisitor> BuildNodeVisitors(VisitorContext context)

@@ -43,13 +43,17 @@ namespace Spark
         }
 
         public string TargetNamespace { get; set; }
+
         public IList<string> Templates { get; set; }
+
         public IList<Accessor> Accessors { get; set; }
+
         public LanguageType Language { get; set; }
 
         public class Accessor
         {
             public string Property { get; set; }
+
             public string GetValue { get; set; }
         }
 
@@ -112,6 +116,7 @@ namespace Spark
                     return false;
                 }
             }
+
             return true;
         }
     }

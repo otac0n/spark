@@ -40,7 +40,6 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
 			_nullBehaviour = nullBehaviour;
         }
 
-
         private SourceWriter CodeIndent(Chunk chunk)
         {
             if (_source.AdjustDebugSymbols)
@@ -86,6 +85,7 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                             "The global named {0} cannot be declared repeatedly with different types or values",
                             chunk.Name));
                 }
+
                 return;
             }
 
@@ -103,7 +103,6 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                 type, chunk.Name, chunk.Value);
             _source.WriteLine();
         }
-
 
         protected override void Visit(ViewDataModelChunk chunk)
         {
@@ -140,6 +139,7 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                         string.Format("The view data named {0} cannot be declared with different types '{1}' and '{2}'",
                                       name, type, _viewDataAdded[name]));
                 }
+
                 return;
             }
 
@@ -173,6 +173,7 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                     .WriteCode(type)
                     .WriteLine(")");
             }
+
             _source
                 .RemoveIndent().WriteLine("End Get")
                 .RemoveIndent().WriteLine("End Property");
@@ -201,6 +202,7 @@ namespace Spark.Compiler.VisualBasic.ChunkVisitors
                     .WriteCode(parameter.Type);
                 delimiter = ", ";
             }
+
             _source
                 .WriteLine(") As String")
                 .AddIndent();

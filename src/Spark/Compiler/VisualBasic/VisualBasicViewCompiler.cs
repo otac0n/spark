@@ -36,7 +36,6 @@ namespace Spark.Compiler.VisualBasic
             CompiledType = assembly.GetType(ViewClassFullName);
         }
 
-
         public override void GenerateSourceCode(IEnumerable<IList<Chunk>> viewTemplates, IEnumerable<IList<Chunk>> allResources)
         {
             var globalSymbols = new Dictionary<string, object>();
@@ -108,7 +107,6 @@ namespace Spark.Compiler.VisualBasic
             source.WriteLine();
             source.WriteLine(string.Format("    Private Shared ReadOnly _generatedViewId As Global.System.Guid = New Global.System.Guid(\"{0:n}\")", GeneratedViewId));
 
-
             source
                 .WriteLine("    Public Overrides ReadOnly Property GeneratedViewId() As Global.System.Guid")
                 .WriteLine("      Get")
@@ -172,10 +170,10 @@ namespace Spark.Compiler.VisualBasic
                         .WriteLine("RenderViewLevel{0}()", invokeLevel);
                 }
             }
+
             source
                 .RemoveIndent()
                 .WriteLine("End Sub");
-
 
             source
                 .RemoveIndent()

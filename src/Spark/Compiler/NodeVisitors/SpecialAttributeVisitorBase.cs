@@ -32,10 +32,12 @@ namespace Spark.Compiler.NodeVisitors
         public class Frame
         {
             public string ClosingName { get; set; }
+
             public int ClosingNameOutstanding { get; set; }
         }
 
         protected abstract bool IsSpecialAttribute(ElementNode element, AttributeNode attribute);
+
         protected abstract SpecialNode CreateWrappingNode(AttributeNode attr, ElementNode node);
 
         protected override void Visit(ElementNode node)

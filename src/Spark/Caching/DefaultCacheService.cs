@@ -79,7 +79,5 @@ namespace Spark.Caching
                 _signal.Changed -= SignalChanged;
             }
         }
-
     }
-
 }

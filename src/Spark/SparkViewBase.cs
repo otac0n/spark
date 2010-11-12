@@ -38,8 +38,11 @@ namespace Spark
         }
 
         public TextWriter Output { get; set; }
+
         public Dictionary<string, TextWriter> Content { get; set; }
+
         public Dictionary<string, object> Globals { get; set; }
+
         public Dictionary<string, string> OnceTable { get; set; }
     }
 
@@ -63,13 +66,16 @@ namespace Spark
                        Interlocked.CompareExchange(ref _sparkViewContext, new SparkViewContext(), null) ??
                        _sparkViewContext;
             }
+
             set { _sparkViewContext = value; }
         }
 
-
         public TextWriter Output { get { return SparkViewContext.Output; } set { SparkViewContext.Output = value; } }
+
         public Dictionary<string, TextWriter> Content { get { return SparkViewContext.Content; } set { SparkViewContext.Content = value; } }
+
         public Dictionary<string, object> Globals { get { return SparkViewContext.Globals; } set { SparkViewContext.Globals = value; } }
+
         public Dictionary<string, string> OnceTable { get { return SparkViewContext.OnceTable; } set { SparkViewContext.OnceTable = value; } }
 
         public IDisposable OutputScope(string name)
@@ -80,6 +86,7 @@ namespace Spark
                 writer = new SpoolWriter();
                 Content.Add(name, writer);
             }
+
             return new OutputScopeImpl(this, writer);
         }
 
@@ -98,7 +105,6 @@ namespace Spark
             return new MarkdownOutputScopeImpl(this, new SpoolWriter());
         }
 
-
         public bool Once(object flag)
         {
             var flagString = Convert.ToString(flag);
@@ -108,7 +114,6 @@ namespace Spark
             SparkViewContext.OnceTable.Add(flagString, null);
             return true;
         }
-
 
         public class OutputScopeImpl : IDisposable
         {
@@ -172,8 +177,8 @@ namespace Spark
         }
 
         private CacheScopeImpl _currentCacheScope;
-        public ICacheService CacheService { get; set; }
 
+        public ICacheService CacheService { get; set; }
 
         private class CacheScopeImpl
         {
@@ -195,7 +200,6 @@ namespace Spark
                 _cacheService = view.CacheService ?? _nullCacheService;
                 _originator = new CacheOriginator(view.SparkViewContext);
             }
-
 
             public bool Begin()
             {
@@ -221,9 +225,9 @@ namespace Spark
                     var memento = _originator.EndMemento();
                     _cacheService.Store(_identifier, _expires, signal, memento);
                 }
+
                 return _previousCacheScope;
             }
-
 
             private class NullCacheService : ICacheService
             {
@@ -248,5 +252,4 @@ namespace Spark
 
         public abstract void Render();
     }
-
 }

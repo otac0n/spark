@@ -24,7 +24,6 @@ namespace Spark.Bindings
 {
     public class BindingNode
     {
-
     }
 
     public class BindingLiteral : BindingNode
@@ -45,6 +44,7 @@ namespace Spark.Bindings
         }
 
         public string Name { get; set; }
+
         public bool AssumeStringValue { get; set; }
     }
 
@@ -56,12 +56,13 @@ namespace Spark.Bindings
         }
 
         public string Prefix { get; set; }
+        
         public bool AssumeStringValue { get; set; }
+
         public bool AssumeDictionarySyntax { get; set; }
     }
 
     public class BindingChildReference : BindingNode
     {
     }
-
 }

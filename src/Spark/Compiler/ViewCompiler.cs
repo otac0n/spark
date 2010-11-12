@@ -34,17 +34,25 @@ namespace Spark.Compiler
         }
 
         public string BaseClass { get; set; }
+
         public SparkViewDescriptor Descriptor { get; set; }
+
         public string ViewClassFullName { get; set; }
 
         public string SourceCode { get; set; }
+
         public IList<SourceMapping> SourceMappings { get; set; }
+
         public Type CompiledType { get; set; }
+
         public Guid GeneratedViewId { get; set; }
 
         public bool Debug { get; set; }
+
 		public NullBehaviour NullBehaviour { get; set; }
+
     	public IEnumerable<string> UseNamespaces { get; set; }
+
         public IEnumerable<string> UseAssemblies { get; set; }
 
         public string TargetNamespace
@@ -56,12 +64,12 @@ namespace Spark.Compiler
         }
 
         public abstract void CompileView(IEnumerable<IList<Chunk>> viewTemplates, IEnumerable<IList<Chunk>> allResources);
+
         public abstract void GenerateSourceCode(IEnumerable<IList<Chunk>> viewTemplates, IEnumerable<IList<Chunk>> allResources);
 
         public ISparkView CreateInstance()
         {
             return (ISparkView)Activator.CreateInstance(CompiledType);
         }
-
     }
 }

@@ -60,7 +60,6 @@ namespace Spark.Configuration
 
         public IDictionary<string, string> Parameters { get; set; }
 
-
         protected override bool OnDeserializeUnrecognizedAttribute(string name, string value)
         {
             Parameters.Add(name, value);

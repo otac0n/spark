@@ -42,6 +42,7 @@ namespace Spark.FileSystem
                 {
                     writer.Write(value);
                 }
+
                 return stream.ToArray();
             }
         }
@@ -110,6 +111,7 @@ namespace Spark.FileSystem
             {
                 return obj == null ? null : obj.Replace('/', '\\');
             }
+
             public bool Equals(string x, string y)
             {
                 return _baseComparer.Equals(Adjust(x), Adjust(y));

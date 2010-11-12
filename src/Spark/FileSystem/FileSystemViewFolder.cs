@@ -37,7 +37,6 @@ namespace Spark.FileSystem
             get { return _basePath; }
         }
 
-
         public IViewFile GetViewSource(string path)
         {
             string fullPath = Path.Combine(_basePath, path);

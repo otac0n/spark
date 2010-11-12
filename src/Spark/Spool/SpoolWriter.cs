@@ -30,6 +30,7 @@ namespace Spark.Spool
     {
         private readonly SpoolPage _first;
         private SpoolPage _last;
+
         public SpoolWriter()
         {
             _first = new SpoolPage();
@@ -77,7 +78,6 @@ namespace Spark.Spool
         {
             _first.Release();            
         }
-
 
         public override string ToString()
         {

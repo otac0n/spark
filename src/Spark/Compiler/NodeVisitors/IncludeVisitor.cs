@@ -44,8 +44,11 @@ namespace Spark.Compiler.NodeVisitors
         public class Frame
         {
             public Mode Mode { get; set; }
+
             public Exception IncludeException { get; set; }
+
             public IList<Node> NodesForFallback { get; set; }
+
             public bool FallbackUsed;
 
             public int RedundantDepth { get; set; }
@@ -98,10 +101,12 @@ namespace Spark.Compiler.NodeVisitors
                 {
                     throw new CompilerException("Unexpected </include> element");
                 }
+
                 if (FrameData.RedundantDepth-- == 0)
                     EndInclude();
                 return;
             }
+
             if (NameUtility.IsMatch("fallback", Constants.XIncludeNamespace, node.Name, node.Namespace, Context.Namespaces))
             {
                 if (FrameData.Mode != Mode.NormalContent &&
@@ -109,10 +114,12 @@ namespace Spark.Compiler.NodeVisitors
                 {
                     throw new CompilerException("Unexpected </fallback> element");
                 }
+
                 if (FrameData.RedundantDepth-- == 0)
                     EndFallback();
                 return;
             }
+
             base.Visit(node);
         }
 
@@ -128,7 +135,6 @@ namespace Spark.Compiler.NodeVisitors
             }
             catch (FileNotFoundException ex)
             {
-
                 PushFrame(new List<Node>(), new Frame { Mode = Mode.FailedInclude, IncludeException = ex, NodesForFallback = Nodes });
             }
         }
@@ -142,7 +148,6 @@ namespace Spark.Compiler.NodeVisitors
             {
                 throw new CompilerException(frame.IncludeException.Message);
             }
-
         }
 
         void BeginFallback()
@@ -152,10 +157,12 @@ namespace Spark.Compiler.NodeVisitors
                 PushFrame(Nodes, new Frame { Mode = Mode.IgnoringFallback });
                 return;
             }
+
             if (FrameData.Mode != Mode.FailedInclude)
             {
                 throw new CompilerException("<fallback> only valid inside <include>");
             }
+
             FrameData.FallbackUsed = true;
             PushFrame(FrameData.NodesForFallback, new Frame { Mode = Mode.NormalContent });
         }

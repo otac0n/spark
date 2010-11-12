@@ -51,10 +51,8 @@ namespace Spark.Bindings
                            return hit.Left.Down;
                        });
 
-
             PrefixReference = stringPrefixReference.Or(rawPrefixReference).Or(dictionaryPrefixReference)
                 .Build(hit => (BindingNode)hit);
-
 
             var stringNameReference = Ch("\"@").And(Name).And(Ch('\"'))
                 .Or(Ch("'@").And(Name).And(Ch('\'')))
@@ -84,11 +82,13 @@ namespace Spark.Bindings
         }
 
         public ParseAction<BindingNode> PrefixReference { get; set; }
+        
         public ParseAction<BindingNode> NameReference { get; set; }
+        
         public ParseAction<BindingNode> Literal { get; set; }
+        
         public ParseAction<IList<BindingNode>> Nodes { get; set; }
+
         public ParseAction<BindingPhrase> Phrase { get; set; }
     }
-
-
 }

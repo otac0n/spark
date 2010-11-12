@@ -78,10 +78,12 @@ namespace Spark.Compiler.NodeVisitors
         }
 
         private int _acceptNodesLevel;
+
         protected override void BeforeAcceptNodes()
         {
             _acceptNodesLevel++;
         }
+
         protected override void AfterAcceptNodes()
         {
             _acceptNodesLevel--;
@@ -177,7 +179,6 @@ namespace Spark.Compiler.NodeVisitors
             return Context.PartialFileNames.Contains(NameUtility.GetName(name));
         }
 
-
         private bool TryCreateExtension(ElementNode node, out ISparkExtension extension)
         {
             if (Context.ExtensionFactory == null)
@@ -189,7 +190,6 @@ namespace Spark.Compiler.NodeVisitors
             extension = Context.ExtensionFactory.CreateExtension(Context, node);
             return extension != null;
         }
-
 
         protected override void Visit(EndElementNode node)
         {

@@ -34,14 +34,12 @@ namespace Spark
     {
         public SparkServiceContainer()
         {
-
         }
 
         public SparkServiceContainer(ISparkSettings settings)
         {
             _services[typeof(ISparkSettings)] = settings;
         }
-
 
         readonly Dictionary<Type, object> _services = new Dictionary<Type, object>();
 
@@ -59,7 +57,6 @@ namespace Spark
                     { typeof(IViewFolder), CreateDefaultViewFolder },
                     { typeof(ICompiledViewHolder), c => new CompiledViewHolder() },
                 };
-
 
         public T GetService<T>()
         {
@@ -83,10 +80,10 @@ namespace Spark
                         ((ISparkServiceInitialize)service).Initialize(this);
                     return service;
                 }
+
                 return null;
             }
         }
-
 
         public void SetService<TService>(TService service)
         {

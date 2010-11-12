@@ -41,8 +41,11 @@ namespace Spark.Compiler
         }
 
         public bool Recognized { get; set; }
+
         public string VariableType { get; set; }
+
         public string VariableName { get; set; }
+
         public string CollectionCode { get; set; }
     }
 }

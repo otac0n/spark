@@ -33,7 +33,9 @@ namespace Spark.FileSystem
     public class LocateResult
     {
         public string Path { get; set; }
+
         public IViewFile ViewFile { get; set; }
+
         public IList<string> SearchedLocations { get; set; }
     }
 }

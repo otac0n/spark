@@ -37,6 +37,7 @@ namespace Spark
         }
 
         public string OutputAssembly { get; set; }
+
         public IList<SparkBatchEntry> Entries { get; set; }
 
         public SparkBatchConfigurator For(Type controllerType)
@@ -66,15 +67,18 @@ namespace Spark
                 {
                     config.Include(item);
                 }
+
                 foreach (var item in SplitParts(precompileAttribute.Exclude))
                 {
                     config.Exclude(item);
                 }
+
                 foreach (var item in SplitParts(precompileAttribute.Layout))
                 {
                     config.Layout(item.Split('+'));
                 }
             }
+
             return this;
         }
 
@@ -107,8 +111,11 @@ namespace Spark
         }
 
         public Type ControllerType { get; set; }
+
         public IList<IList<string>> LayoutNames { get; set; }
+
         public IList<string> IncludeViews { get; set; }
+
         public IList<string> ExcludeViews { get; set; }
     }
 
@@ -127,6 +134,7 @@ namespace Spark
         {
             return descriptor.FromAssemblyNamed(assemblyString);
         }
+
         public SparkBatchDescriptor FromAssembly(Assembly assembly)
         {
             return descriptor.FromAssembly(assembly);

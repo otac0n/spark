@@ -44,15 +44,18 @@ namespace Spark
                 if (mapping.Stop)
                     return effectivePath;
             }
+            
             if (effectivePath.StartsWith("http://", StringComparison.InvariantCultureIgnoreCase)
                 || effectivePath.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase))
             {
                 return effectivePath;
             }
+            
             if (effectivePath.StartsWith("~/", StringComparison.InvariantCultureIgnoreCase))
             {
                 effectivePath = effectivePath.Substring(1);
             }
+
             return PathConcat(siteRoot, effectivePath);
         }
 
@@ -69,6 +72,5 @@ namespace Spark
 
             return siteRoot + "/" + path;
         }
-
     }
 }

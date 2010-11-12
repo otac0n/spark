@@ -59,10 +59,10 @@ namespace Spark.FileSystem
                         relativePath = relativePath.Substring(0, lastDelimiter) + "." +
                                        relativePath.Substring(lastDelimiter + 1);
                     }
+
                     Add(relativePath, contents);
                 }
             }
         }
-
     }
 }

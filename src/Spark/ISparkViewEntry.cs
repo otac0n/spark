@@ -28,10 +28,13 @@ namespace Spark
         Guid ViewId { get; }
 
         SparkViewDescriptor Descriptor { get; }
+
         ISparkView CreateInstance();
+
         void ReleaseInstance(ISparkView view);
 
         string SourceCode { get; }
+
         IList<SourceMapping> SourceMappings { get; }
 
         bool IsCurrent();

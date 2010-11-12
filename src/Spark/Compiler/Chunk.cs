@@ -39,15 +39,18 @@ namespace Spark.Compiler
     public class SendExpressionChunk : Chunk
     {
         public Snippets Code { get; set; }
+
         //public IList<Snippet> Snippets { get; set; }
 
         public bool SilentNulls { get; set; }
+
         public bool AutomaticallyEncode { get; set; }
     }
 
     public class CodeStatementChunk : Chunk
     {
         public Snippets Code { get; set; }
+
         //public IList<Snippet> Snippets { get; set; }
     }
 
@@ -57,8 +60,11 @@ namespace Spark.Compiler
         {
             Type = "object";
         }
+
         public Snippets Name { get; set; }
+
         public Snippets Type { get; set; }
+
         public Snippets Value { get; set; }
     }
 
@@ -70,7 +76,9 @@ namespace Spark.Compiler
         }
 
         public Snippets Name { get; set; }
+
         public Snippets Type { get; set; }
+
         public Snippets Value { get; set; }
     }
 
@@ -80,8 +88,11 @@ namespace Spark.Compiler
         {
             Type = "var";
         }
+
         public string Name { get; set; }
+
         public Snippets Type { get; set; }
+
         public Snippets Value { get; set; }
     }
 
@@ -91,21 +102,27 @@ namespace Spark.Compiler
         {
             Type = "object";
         }
+
         public Snippets Name { get; set; }
+
         public Snippets Type { get; set; }
+
         public string Key { get; set; }
+
         public Snippets Default { get; set; }
     }
 
     public class ViewDataModelChunk : Chunk
     {
         public Snippets TModel { get; set; }
+
         public Snippets TModelAlias { get; set; }
     }
 
     public class AssignVariableChunk : Chunk
     {
         public string Name { get; set; }
+
         public Snippets Value { get; set; }
     }
 
@@ -115,7 +132,9 @@ namespace Spark.Compiler
         {
             Default = new List<Chunk>();
         }
+
         public string Name { get; set; }
+
         public IList<Chunk> Default { get; set; }
     }
 
@@ -128,8 +147,11 @@ namespace Spark.Compiler
         }
 
         public string Name { get; set; }
+
         public FileContext FileContext { get; set; }
+
         public IList<Chunk> Body { get; set; }
+
         public IDictionary<string, IList<Chunk>> Sections { get; set; }
     }
 
@@ -151,6 +173,7 @@ namespace Spark.Compiler
         }
 
         public string Name { get; set; }
+
         public IList<Chunk> Default { get; set; }
     }
 
@@ -170,7 +193,9 @@ namespace Spark.Compiler
         {
             Body = new List<Chunk>();
         }
+
         public string Name { get; set; }
+
         public IList<Chunk> Body { get; set; }
     }
 
@@ -188,8 +213,11 @@ namespace Spark.Compiler
             Body = new List<Chunk>();
             AddType = ContentAddType.Replace;
         }
+
         public Snippets Variable { get; set; }
+
         public IList<Chunk> Body { get; set; }
+
         public ContentAddType AddType { get; set; }
     }
 
@@ -199,7 +227,9 @@ namespace Spark.Compiler
         {
             Body = new List<Chunk>();
         }
+
         public Snippets Code { get; set; }
+
         public IList<Chunk> Body { get; set; }
     }
 
@@ -210,14 +240,18 @@ namespace Spark.Compiler
             Body = new List<Chunk>();
             Parameters = new List<MacroParameter>();
         }
+
         public string Name { get; set; }
+
         public IList<MacroParameter> Parameters { get; set; }
+
         public IList<Chunk> Body { get; set; }
     }
 
     public class MacroParameter
     {
         public string Name { get; set; }
+
         public Snippets Type { get; set; }
     }
 
@@ -227,6 +261,7 @@ namespace Spark.Compiler
         {
             Body = new List<Chunk>();
         }
+
         public IList<Chunk> Body { get; set; }
     }
 
@@ -238,8 +273,11 @@ namespace Spark.Compiler
         }
 
         public ConditionalType Type { get; set; }
+
         public Snippets Condition { get; set; }
+
         public IList<Chunk> Body { get; set; }
+
         //public IList<Snippet> Snippets { get; set; }
     }
 
@@ -259,6 +297,7 @@ namespace Spark.Compiler
         }
 
         public ISparkExtension Extension { get; set; }
+
         public IList<Chunk> Body { get; set; }
     }
 
@@ -275,7 +314,9 @@ namespace Spark.Compiler
         }
 
         public Snippets Key { get; set; }
+
         public Snippets Expires { get; set; }
+
         public Snippets Signal { get; set; }
 
         public IList<Chunk> Body { get; set; }
@@ -287,6 +328,7 @@ namespace Spark.Compiler
         {
             Body = new List<Chunk>();
         }
+
         public IList<Chunk> Body { get; set; }
     }
 }

@@ -67,8 +67,8 @@ namespace Spark.Parser.Code
                     expression.AppendLiteral("&" + ((EntityNode)node).Name + ";");
                 }
             }
+
             return new Snippets(expression.ToCode());
         }
-
     }
 }

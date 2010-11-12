@@ -51,7 +51,6 @@ namespace Spark.Spool
             _nonreusable = true;
             original._nonreusable = true;
         }
-        
 
         public SpoolPage Next
         {
@@ -108,6 +107,7 @@ namespace Spark.Spool
                         Array.Clear(scan._buffer, 0, scan._count);
                         _allocator._cache.Push(scan._buffer);
                     }
+
                     scan = scan._next;
                 }
             }
@@ -116,7 +116,6 @@ namespace Spark.Spool
                 Monitor.Exit(_allocator._cache);
             }
         }
-
 
         class Allocator
         {

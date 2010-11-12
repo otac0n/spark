@@ -37,7 +37,6 @@ namespace Spark.Compiler.CSharp
             CompiledType = assembly.GetType(ViewClassFullName);
         }
 
-
         public override void GenerateSourceCode(IEnumerable<IList<Chunk>> viewTemplates, IEnumerable<IList<Chunk>> allResources)
         {
             var globalSymbols = new Dictionary<string, object>();
@@ -48,8 +47,6 @@ namespace Spark.Compiler.CSharp
             var usingGenerator = new UsingNamespaceVisitor(source);
             var baseClassGenerator = new BaseClassVisitor { BaseClass = BaseClass };
             var globalsGenerator = new GlobalMembersVisitor(source, globalSymbols, NullBehaviour);
-            
-
 
             // using <namespaces>;
             foreach (var ns in UseNamespaces ?? new string[0])
@@ -145,7 +142,6 @@ namespace Spark.Compiler.CSharp
             source.WriteLine("public override void Render()");
             source.WriteLine("{").AddIndent();
             for (var invokeLevel = 0; invokeLevel != renderLevel; ++invokeLevel)
-
             {
                 if (invokeLevel != renderLevel - 1)
                 {
@@ -153,10 +149,10 @@ namespace Spark.Compiler.CSharp
                 }
                 else
                 {
-
                     source.WriteLine("        RenderViewLevel{0}();", invokeLevel);
                 }
             }
+
             source.RemoveIndent().WriteLine("}");
 
             // end class

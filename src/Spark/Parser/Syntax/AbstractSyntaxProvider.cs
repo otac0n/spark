@@ -31,7 +31,9 @@ namespace Spark.Parser.Syntax
     public abstract class AbstractSyntaxProvider : ISparkSyntaxProvider
     {
         public abstract IList<Chunk> GetChunks(VisitorContext context, string path);
+
         public abstract IList<Node> IncludeFile(VisitorContext context, string path, string parse);
+
         public abstract Snippets ParseFragment(Position begin, Position end);
 
         public static SourceContext CreateSourceContext(string viewPath, IViewFolder viewFolder)

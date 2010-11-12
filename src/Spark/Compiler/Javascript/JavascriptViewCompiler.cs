@@ -64,8 +64,8 @@ namespace Spark.Compiler.Javascript
             {
                 globalMembers.Accept(chunks);
             }
-            source.AppendLine("RenderView: function(viewData) {");
 
+            source.AppendLine("RenderView: function(viewData) {");
 
             source.Append("var StringWriter = function() {");
             source.Append("this._parts = [];");

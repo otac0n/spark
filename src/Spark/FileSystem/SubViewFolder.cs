@@ -67,7 +67,6 @@ namespace Spark.FileSystem
             return _viewFolder.GetViewSource(adjusted);
         }
 
-
         public IList<string> ListViews(string path)
         {
             var adjusted = Adjust(path);

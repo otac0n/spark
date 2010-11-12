@@ -114,6 +114,7 @@ namespace Spark.Compiler
                             writer.Write(sourceCodeItem);
                         }
                     }
+
                     codeFiles.Add(codeFile);
                 }
 
@@ -125,6 +126,7 @@ namespace Spark.Compiler
                 {
                     compilerParameters.OutputAssembly = baseFile + ".dll";
                 }
+
                 compilerResults = codeProvider.CompileAssemblyFromFile(compilerParameters, codeFiles.ToArray());
             }
             else
@@ -167,6 +169,7 @@ namespace Spark.Compiler
                         }
                     }
                 }
+
                 throw new CompilerException(sb.ToString());
             }
 

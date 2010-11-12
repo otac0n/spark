@@ -40,6 +40,7 @@ namespace Spark
             {
                 return _decorated != null ? _decorated.SparkViewContext : base.SparkViewContext;
             }
+
             set
             {
                 if (_decorated != null)
@@ -57,6 +58,7 @@ namespace Spark
                 _decorated.RenderView(spooled);
                 Content["view"] = spooled;
             }
+
             base.RenderView(writer);
         }
     }

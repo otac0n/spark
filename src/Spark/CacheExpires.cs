@@ -49,10 +49,13 @@ namespace Spark
         }
 
         public DateTime Absolute { get; set; }
+
         public TimeSpan Sliding { get; set; }
 
         public static DateTime NoAbsoluteExpiration { get { return System.Web.Caching.Cache.NoAbsoluteExpiration; } }
+
         public static TimeSpan NoSlidingExpiration { get { return System.Web.Caching.Cache.NoSlidingExpiration; } }
+
         public static CacheExpires Empty { get { return _empty; } }
     }
 }

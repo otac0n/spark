@@ -30,6 +30,7 @@ namespace Spark.Bindings
         }
 
         public PhraseType Type { get; set; }
+
         public IList<BindingNode> Nodes { get; set; }
     }
 }

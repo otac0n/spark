@@ -95,6 +95,7 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
                         Accept(chunk.Body);
                         _source.AppendLine("}");
                     }
+
                     break;
                 case ConditionalType.ElseIf:
                     {
@@ -102,6 +103,7 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
                         Accept(chunk.Body);
                         _source.AppendLine("}");
                     }
+
                     break;
                 case ConditionalType.Else:
                     {
@@ -109,6 +111,7 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
                         Accept(chunk.Body);
                         _source.AppendLine("}");
                     }
+
                     break;
             }
         }
@@ -226,8 +229,6 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
             }
         }
 
-        
-
         protected override void Visit(ScopeChunk chunk)
         {
             _source.AppendLine("{");
@@ -286,6 +287,5 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
 
             _source.AppendLine("DisposeOutputScope();}");
         }
-
     }
 }

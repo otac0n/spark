@@ -158,30 +158,55 @@ namespace Spark.Compiler.ChunkVisitors
         }
 
         protected abstract void Visit(UseMasterChunk chunk);
+
         protected abstract void Visit(DefaultVariableChunk chunk);
+
         protected abstract void Visit(UseImportChunk chunk);
+
         protected abstract void Visit(ContentSetChunk chunk);
+
         protected abstract void Visit(RenderSectionChunk chunk);
+
         protected abstract void Visit(UseAssemblyChunk chunk);
+
         protected abstract void Visit(MacroChunk chunk);
+
         protected abstract void Visit(CodeStatementChunk chunk);
+
         protected abstract void Visit(ExtensionChunk chunk);
+
         protected abstract void Visit(ConditionalChunk chunk);
+
         protected abstract void Visit(ViewDataModelChunk chunk);
+
         protected abstract void Visit(ViewDataChunk chunk);
+
         protected abstract void Visit(RenderPartialChunk chunk);
+
         protected abstract void Visit(AssignVariableChunk chunk);
+
         protected abstract void Visit(UseContentChunk chunk);
+
         protected abstract void Visit(GlobalVariableChunk chunk);
+
         protected abstract void Visit(ScopeChunk chunk);
+
         protected abstract void Visit(ForEachChunk chunk);
+
         protected abstract void Visit(SendLiteralChunk chunk);
+
         protected abstract void Visit(LocalVariableChunk chunk);
+
         protected abstract void Visit(SendExpressionChunk chunk);
+
         protected abstract void Visit(ContentChunk chunk);
+
         protected abstract void Visit(UseNamespaceChunk chunk);
+
         protected abstract void Visit(PageBaseTypeChunk chunk);
+
         protected abstract void Visit(CacheChunk chunk);
+
         protected abstract void Visit(MarkdownChunk chunk);
 
         protected void EnterRenderPartial(RenderPartialChunk chunk)
@@ -202,8 +227,10 @@ namespace Spark.Compiler.ChunkVisitors
                         .Append(recursed.Name)
                         .AppendLine("'");
                 }
+
                 throw new CompilerException(string.Format("Recursive rendering of partial files not possible.\r\n{0}", sb));
             }
+
             _renderPartialStack.Push(chunk);
         }
 
@@ -213,6 +240,7 @@ namespace Spark.Compiler.ChunkVisitors
             {
                 throw new CompilerException("Internal compiler error. Partial stack unexpectedly empty.");
             }
+
             return _renderPartialStack.Pop();
         }
 

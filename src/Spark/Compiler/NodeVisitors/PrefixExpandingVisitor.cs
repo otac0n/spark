@@ -42,7 +42,6 @@ namespace Spark.Compiler.NodeVisitors
                             };
         }
 
-
         public class PrefixSpecs
         {
             public PrefixSpecs(string prefix, string ns, string elementName, string attributeName)
@@ -54,14 +53,18 @@ namespace Spark.Compiler.NodeVisitors
             }
 
             public string Prefix { get; set; }
+
             public string Namespace { get; set; }
+
             public string ElementName { get; set; }
+
             public string AttributeName { get; set; }
         }
 
         public class Frame
         {
             public string OriginalElementName { get; set; }
+
             public PrefixSpecs Specs { get; set; }
         }
 

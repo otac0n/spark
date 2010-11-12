@@ -26,7 +26,6 @@ namespace Spark.Compiler.NodeVisitors
 {
     static class NameUtility
     {
-
         public static string GetPrefix(string name)
         {
             var colonIndex = name.IndexOf(':');
@@ -57,7 +56,6 @@ namespace Spark.Compiler.NodeVisitors
 
             return namespaceA == namespaceB &&
                    GetName(nameA) == GetName(nameB);
-
         }
     }
 }

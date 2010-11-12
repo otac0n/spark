@@ -50,6 +50,7 @@ namespace Spark.Compiler.ChunkVisitors
                 Accept(chunk.Default);
                 ExitRenderPartial(outer);
             }
+
             EnterRenderPartial(outer);
         }
     }

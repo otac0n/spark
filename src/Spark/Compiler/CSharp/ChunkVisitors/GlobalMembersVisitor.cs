@@ -40,8 +40,6 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
 			_nullBehaviour = nullBehaviour;
         }
 
-
-
         private SourceWriter CodeIndent(Chunk chunk)
         {
             if (_source.AdjustDebugSymbols)
@@ -86,6 +84,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
                     throw new CompilerException(string.Format("The global named {0} cannot be declared repeatedly with different types or values",
                                                               chunk.Name));
                 }
+
                 return;
             }
 
@@ -102,9 +101,9 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
                     "\r\n    {0} _{1} = {2};\r\n    public {0} {1} {{ get {{return _{1};}} set {{_{1} = value;}} }}",
                     type, chunk.Name, chunk.Value);
             }
+
             _source.WriteLine();
         }
-
 
         protected override void Visit(ViewDataModelChunk chunk)
         {
@@ -137,6 +136,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
                         string.Format("The view data named {0} cannot be declared with different types '{1}' and '{2}'",
                                       name, type, _viewDataAdded[name]));
                 }
+
                 return;
             }
 
@@ -162,6 +162,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
                     .WriteCode(chunk.Default)
                     .WriteLine(");}}");
             }
+
             CodeDefault();
         }
 
@@ -179,6 +180,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
                 _source.Write(delimiter).WriteCode(parameter.Type).Write(" ").Write(parameter.Name);
                 delimiter = ", ";
             }
+
             _source.WriteLine(")");
             CodeIndent(chunk).WriteLine("{");
             CodeHidden();
@@ -191,6 +193,7 @@ namespace Spark.Compiler.CSharp.ChunkVisitors
             {
                 variables.Add(param.Name, null);
             }
+
             var generator = new GeneratedCodeVisitor(_source, variables, _nullBehaviour);
             generator.Accept(chunk.Body);
 

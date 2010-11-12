@@ -26,7 +26,6 @@ namespace Spark.Compiler.NodeVisitors
 {
     public class TestElseElementVisitor : AbstractNodeVisitor
     {
-
         private Frame _frame = new Frame { Nodes = new List<Node>() };
         readonly Stack<Frame> _stack = new Stack<Frame>();
 
@@ -40,15 +39,16 @@ namespace Spark.Compiler.NodeVisitors
             _stack.Push(_frame);
             _frame = new Frame();
         }
+
         void PopFrame()
         {
             _frame = _stack.Pop();
         }
 
-
         class Frame
         {
             public IList<Node> Nodes { get; set; }
+
             public IList<Node> TestParentNodes { get; set; }
         }
 
@@ -56,7 +56,6 @@ namespace Spark.Compiler.NodeVisitors
         {
             get { return _frame.Nodes; }
         }
-
 
         protected override void Visit(ExpressionNode node)
         {

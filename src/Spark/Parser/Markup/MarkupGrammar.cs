@@ -39,7 +39,6 @@ namespace Spark.Parser.Markup
             var Lt = Ch('<');
             var Gt = Ch('>');
 
-
             //var CombiningChar = Ch('*');
             //var Extener = Ch('*');
 
@@ -62,8 +61,6 @@ namespace Spark.Parser.Markup
             //[25]   	Eq	   ::=   	 S? '=' S?
             var Eq = Opt(Whitespace).And(Ch('=')).And(Opt(Whitespace));
 
-
-
             var paintedStatement1 = Statement1.Build(hit => new StatementNode(hit)).Paint<StatementNode, Node>();
 
             var statementMarker = string.IsNullOrEmpty(settings.StatementMarker) ? "#" : settings.StatementMarker;
@@ -72,7 +69,6 @@ namespace Spark.Parser.Markup
             var StatementNode1 = Opt(Ch('\r')).And(Ch('\n').Or(ChSTX())).And(Rep(Ch(' ', '\t'))).And(TkCode(Ch(statementMarker))).And(paintedStatement1).IfNext(Ch('\r', '\n').Or(ChETX()))
                 .Build(hit => hit.Down);
 
-
             var paintedStatement2 = Statement2.Build(hit => new StatementNode(hit)).Paint<StatementNode, Node>();
 
             // Syntax 2: '<%' (statement ^'%>')  '%>' 
@@ -80,8 +76,6 @@ namespace Spark.Parser.Markup
                 .Build(hit => hit.Left.Down);
 
             Statement = StatementNode1.Or(StatementNode2);
-
-
 
             // Syntax 1: ${csharp_expression}
             var Code1 = TkCode(Ch("${")).And(Expression).And(TkCode(Ch('}')))
@@ -121,12 +115,10 @@ namespace Spark.Parser.Markup
             var AttValueDouble = TkAttQuo(Quot).And(Rep(AsNode(AttValueDoubleText).Or(EntityRefOrAmpersand).Or(AsNode(Code)).Or(AsNode(Condition)).Or(LessThanTextNode).Paint())).And(TkAttQuo(Quot));
             var AttValue = AttValueSingle.Or(AttValueDouble).Left().Down();
 
-
             //[41]   	Attribute	   ::=   	 Name  Eq  AttValue  
             Attribute =
                 TkAttNam(Name).And(TkAttDelim(Eq)).And(AttValue)
                 .Build(hit => new AttributeNode(hit.Left.Left, hit.Down)).Paint<AttributeNode, Node>();
-
 
             //[40]   	STag	   ::=   	'<' Name (S  Attribute)* S? '>'
             //[44]   	EmptyElemTag	   ::=   	'<' Name (S  Attribute)* S? '/>'
@@ -221,7 +213,6 @@ namespace Spark.Parser.Markup
             ProcessingInstruction = Ch("<?").And(PITarget).And(Opt(Whitespace)).And(Rep(Ch(ch => true).Unless(Ch("?>")))).And(Ch("?>"))
                 .Build(hit => new ProcessingInstructionNode { Name = hit.Left.Left.Left.Down, Body = new string(hit.Left.Down.ToArray()) });
 
-
             AnyNode = AsNode(Element).Paint()
                 .Or(AsNode(EndElement).Paint())
                 .Or(AsNode(Text).Paint())
@@ -254,7 +245,6 @@ namespace Spark.Parser.Markup
 
         public ParseAction<ExpressionNode> Code;
         public ParseAction<StatementNode> Statement;
-
 
         public ParseAction<Node> AsNode<TValue>(ParseAction<TValue> parser) where TValue : Node
         {

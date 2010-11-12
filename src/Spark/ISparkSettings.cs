@@ -30,6 +30,7 @@ namespace Spark
         /// <summary>Catch NullReferenceExceptions, and either render the literal expression, or render nothing, respectively, when ${expression} or $!{expression} syntax is used</summary>
         /// <remarks><c>Lenient</c> is the default setting.</remarks>
         Lenient,
+
         /// <summary>Do not wrap expressions in try/catch blocks.  Intended for fail-fast in development environment.</summary>
         Strict
     }
@@ -37,31 +38,40 @@ namespace Spark
     public interface ISparkSettings : IParserSettings
     {
         bool Debug { get; }
+
         NullBehaviour NullBehaviour { get; }
+
         string Prefix { get; }
+
         string PageBaseType { get; set; }
+
         LanguageType DefaultLanguage { get; }
 
         IEnumerable<string> UseNamespaces { get; }
+
         IEnumerable<string> UseAssemblies { get; }
+
         IEnumerable<IResourceMapping> ResourceMappings { get; }
+
         IEnumerable<IViewFolderSettings> ViewFolders { get; }
     }
 
     public interface IResourceMapping
     {
         bool IsMatch(string path);
+        
         string Map(string path);
+
         bool Stop { get; }
     }
 
     public class SimpleResourceMapping : IResourceMapping
     {
-
         public string Match { get; set; }
-        public string Location { get; set; }
-        public bool Stop { get; set; }
 
+        public string Location { get; set; }
+
+        public bool Stop { get; set; }
 
         public bool IsMatch(string path)
         {
@@ -72,25 +82,31 @@ namespace Spark
         {
             return Location + path.Substring(Match.Length);
         }
-
-
     }
 
     public interface IViewFolderSettings
     {
         string Name { get; set; }
+        
         ViewFolderType FolderType { get; set; }
+        
         string Type { get; set; }
+        
         string Subfolder { get; set; }
+        
         IDictionary<string, string> Parameters { get; set; }
     }
 
     internal class ViewFolderSettings : IViewFolderSettings
     {
         public string Name { get; set; }
+        
         public ViewFolderType FolderType { get; set; }
+        
         public string Type { get; set; }
+        
         public string Subfolder { get; set; }
+
         public IDictionary<string, string> Parameters { get; set; }
     }
 }

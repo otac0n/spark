@@ -30,19 +30,23 @@ namespace Spark
     {
         public PrecompileAttribute()
         {
-            
         }
+
         public PrecompileAttribute(string include)
         {
             Include = include;
         }
+
         public PrecompileAttribute(string include, string layout)
         {
             Include = include;
             Layout = layout;
         }
+
         public string Include { get; set; }
+
         public string Exclude { get; set; }
+
         public string Layout { get; set; }
     }
 }

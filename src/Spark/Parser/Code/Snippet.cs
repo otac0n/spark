@@ -25,7 +25,9 @@ namespace Spark.Parser.Code
     public class Snippet
     {
         public string Value { get; set; }
+
         public Position Begin { get; set; }
+
         public Position End { get; set; }
     }
 
@@ -87,6 +89,7 @@ namespace Spark.Parser.Code
             {
                 return true;
             }
+
             return false;
         }
     }

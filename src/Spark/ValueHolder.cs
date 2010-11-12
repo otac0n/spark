@@ -71,6 +71,7 @@ namespace Spark
                         }
                     }
                 }
+
                 return _value;
             }
         }

@@ -36,7 +36,9 @@ namespace Spark.Caching
         }
 
         public abstract TextWriterMemento CreateMemento();
+        
         public abstract void BeginMemento();
+
         public abstract TextWriterMemento EndMemento();
 
         public abstract void DoMemento(TextWriterMemento memento);

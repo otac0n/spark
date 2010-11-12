@@ -45,13 +45,19 @@ namespace Spark.Compiler.NodeVisitors
         public ISparkSyntaxProvider SyntaxProvider { get; set; }
 
         public string ViewPath { get; set; }
+
         public IViewFolder ViewFolder { get; set; }
 
         public string Prefix { get; set; }
+
         public NamespacesType Namespaces { get; set; }
+
         public IEnumerable<Paint> Paint { get; set; }
+
         public IList<string> PartialFileNames { get; set; }
+
         public ISparkExtensionFactory ExtensionFactory { get; set; }
+
         public IEnumerable<Binding> Bindings { get; set; }
     }
 }

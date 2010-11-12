@@ -25,13 +25,16 @@ namespace Spark.FileSystem
     public interface IViewFolder
     {
         IViewFile GetViewSource(string path);
+
         IList<string> ListViews(string path);
+
         bool HasView(string path);
     }
 
     public interface IViewFile
     {
         long LastModified { get; }
+
         Stream OpenViewStream();
     }
 }

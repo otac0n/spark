@@ -144,6 +144,7 @@ namespace Spark.Compiler.NodeVisitors
                 begin = new Position(new SourceContext(attr.Value));
                 end = begin.Advance(begin.PotentialLength());
             }
+
             return Context.SyntaxProvider.ParseFragment(begin, end);
         }
 
@@ -157,6 +158,7 @@ namespace Spark.Compiler.NodeVisitors
                     return paint.Begin;
                 scan = scan.OriginalNode;
             }
+
             return null;
         }
 
@@ -170,6 +172,7 @@ namespace Spark.Compiler.NodeVisitors
                     return paint.End;
                 scan = scan.OriginalNode;
             }
+
             return null;
         }
 

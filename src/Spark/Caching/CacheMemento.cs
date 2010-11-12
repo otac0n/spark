@@ -32,7 +32,9 @@ namespace Spark.Caching
         }
 
         public SpoolWriter SpoolOutput { get; set; }
+
         public Dictionary<string, TextWriterMemento> Content { get; set; }
+
         public Dictionary<string, string> OnceTable { get; set; }
     }
 }

@@ -33,7 +33,9 @@ namespace Spark
     public interface ISparkSyntaxProvider
     {
         IList<Chunk> GetChunks(VisitorContext context, string path);
+
         IList<Node> IncludeFile(VisitorContext context, string path, string parse);
+
         Snippets ParseFragment(Position begin, Position end);
     }
 }

@@ -39,7 +39,6 @@ namespace Spark.Compiler.NodeVisitors
 
         private IDictionary<string, IList<Chunk>> SectionChunks { get; set; }
 
-
         public IDictionary<string, Action<SpecialNode, SpecialNodeInspector>> SpecialNodeMap
         {
             get
@@ -47,6 +46,7 @@ namespace Spark.Compiler.NodeVisitors
                 return _specialNodeMap;
             }
         }
+
         class Frame : IDisposable
         {
             private readonly ChunkBuilderVisitor _visitor;
@@ -108,8 +108,6 @@ namespace Spark.Compiler.NodeVisitors
                                   };
         }
 
-
-
         private Position Locate(Node expressionNode)
         {
             Paint<Node> paint;
@@ -120,6 +118,7 @@ namespace Spark.Compiler.NodeVisitors
                     return paint.Begin;
                 scan = scan.OriginalNode;
             }
+
             return null;
         }
 
@@ -133,6 +132,7 @@ namespace Spark.Compiler.NodeVisitors
                     return paint.End;
                 scan = scan.OriginalNode;
             }
+
             return null;
         }
 
@@ -180,9 +180,9 @@ namespace Spark.Compiler.NodeVisitors
             {
                 Chunks.Remove(sendLiteral);
             }
+
             Chunks.Add(chunk);
         }
-
 
         protected override void Visit(EntityNode entityNode)
         {
@@ -200,14 +200,11 @@ namespace Spark.Compiler.NodeVisitors
             });
         }
 
-
-
         protected override void Visit(StatementNode node)
         {
             //REFACTOR: what is UnarmorCode doing at this point?
             AddKillingWhitespace(new CodeStatementChunk { Code = node.Code, Position = Locate(node) });
         }
-
 
         protected override void Visit(DoctypeNode docTypeNode)
         {
@@ -301,6 +298,7 @@ namespace Spark.Compiler.NodeVisitors
                     accumulatedNodes.Add(node);
                 }
             }
+
             processedNodes.AddRange(accumulatedNodes);
 
             var allNodesAreConditional = processedNodes.All(node => node is ConditionNode);
@@ -322,7 +320,6 @@ namespace Spark.Compiler.NodeVisitors
                 _sendAttributeOnce.Body.Add(new SendLiteralChunk { Text = " " + attributeNode.Name + "=\"" });
                 _sendAttributeIncrement = new AssignVariableChunk { Name = "__just__once__", Value = "1" };
 
-
                 Chunks.Add(scope);
 
                 using (new Frame(this, scope.Body))
@@ -330,6 +327,7 @@ namespace Spark.Compiler.NodeVisitors
                     foreach (var node in processedNodes)
                         Accept(node);
                 }
+
                 _sendAttributeOnce = null;
                 _sendAttributeIncrement = null;
 
@@ -368,6 +366,7 @@ namespace Spark.Compiler.NodeVisitors
                 {
                     priorNodes.Add(new TextNode(priorText.Substring(0, finalPieceIndex)) { OriginalNode = priorNode });
                 }
+
                 return;
             }
         }
@@ -401,7 +400,6 @@ namespace Spark.Compiler.NodeVisitors
             AddLiteral(node.PreceedingWhitespace + "</" + node.Name + ">");
         }
 
-
         protected override void Visit(CommentNode commentNode)
         {
             AddLiteral("<!--" + commentNode.Text + "-->");
@@ -414,7 +412,6 @@ namespace Spark.Compiler.NodeVisitors
             {
                 throw new CompilerException(string.Format("Unknown special node {0}", specialNode.Element.Name));
             }
-
 
             var action = SpecialNodeMap[nqName];
             action(specialNode, new SpecialNodeInspector(specialNode));
@@ -429,6 +426,7 @@ namespace Spark.Compiler.NodeVisitors
                 begin = new Position(new SourceContext(attr.Value));
                 end = begin.Advance(begin.PotentialLength());
             }
+
             return Context.SyntaxProvider.ParseFragment(begin, end);
         }
 
@@ -440,6 +438,7 @@ namespace Spark.Compiler.NodeVisitors
             {
                 macro.Parameters.Add(new MacroParameter { Name = attr.Name, Type = AsCode(attr) });
             }
+
             AddUnordered(macro);
             using (new Frame(this, macro.Body))
             {
@@ -494,6 +493,7 @@ namespace Spark.Compiler.NodeVisitors
                         var useNamespaceChunk = new UseNamespaceChunk { Namespace = AsCode(namespaceAttr) };
                         AddUnordered(useNamespaceChunk);
                     }
+
                     if (assemblyAttr != null)
                     {
                         var useAssemblyChunk = new UseAssemblyChunk { Assembly = assemblyAttr.Value };
@@ -562,6 +562,7 @@ namespace Spark.Compiler.NodeVisitors
                     {
                         Chunks.Add(new LocalVariableChunk { Name = attr.Name, Value = AsCode(attr), Position = Locate(attr) });
                     }
+
                     var render = new RenderSectionChunk { Name = sectionName };
                     Chunks.Add(render);
                     using (new Frame(this, render.Default))
@@ -680,7 +681,6 @@ namespace Spark.Compiler.NodeVisitors
             using (new Frame(this, chunk.Body))
                 Accept(inspector.Body);
         }
-
 
         private void VisitIf(SpecialNode specialNode, SpecialNodeInspector inspector)
         {
@@ -900,9 +900,9 @@ namespace Spark.Compiler.NodeVisitors
                     return true;
                 }
             }
+
             return false;
         }
-
 
         static string UnarmorCode(string code)
         {
@@ -916,8 +916,5 @@ namespace Spark.Compiler.NodeVisitors
             using (new Frame(this, extensionChunk.Body))
                 extensionNode.Extension.VisitNode(this, extensionNode.Body, Chunks);
         }
-
-
-
     }
 }

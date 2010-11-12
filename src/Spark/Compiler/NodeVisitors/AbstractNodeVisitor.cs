@@ -29,6 +29,7 @@ namespace Spark.Compiler.NodeVisitors
         {
             Context = context;
         }
+
         public VisitorContext Context { get; set; }
 
         public abstract IList<Node> Nodes { get; }
@@ -83,21 +84,32 @@ namespace Spark.Compiler.NodeVisitors
                 throw new ArgumentException(string.Format("Unknown node type {0}", node.GetType()), "node");
         }
 
-
-
         protected abstract void Visit(StatementNode node);
+
         protected abstract void Visit(ExpressionNode node);
+
         protected abstract void Visit(EntityNode entityNode);
+
         protected abstract void Visit(DoctypeNode docTypeNode);
+
         protected abstract void Visit(TextNode textNode);
+
         protected abstract void Visit(ElementNode node);
+
         protected abstract void Visit(EndElementNode node);
+
         protected abstract void Visit(AttributeNode attributeNode);
+
         protected abstract void Visit(CommentNode commentNode);
+
         protected abstract void Visit(SpecialNode specialNode);
+
         protected abstract void Visit(ExtensionNode node);
+
         protected abstract void Visit(ConditionNode node);
+
         protected abstract void Visit(XMLDeclNode node);
+
         protected abstract void Visit(ProcessingInstructionNode node);
     }
 }

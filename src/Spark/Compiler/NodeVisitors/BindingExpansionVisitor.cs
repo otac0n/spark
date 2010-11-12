@@ -36,8 +36,11 @@ namespace Spark.Compiler.NodeVisitors
         public class Frame
         {
             public ElementNode Element { get; set; }
+
             public Binding Binding { get; set; }
+
             public int RedundantDepth { get; set; }
+
             public int NestingLevel { get; set; }
         }
 
@@ -62,7 +65,6 @@ namespace Spark.Compiler.NodeVisitors
                 EndBinding();
         }
 
-
         protected override void Visit(EndElementNode endElement)
         {
             if (FrameData.Binding != null && FrameData.Binding.ElementName == endElement.Name)
@@ -73,10 +75,9 @@ namespace Spark.Compiler.NodeVisitors
                     return;
                 }
             }
+
             base.Visit(endElement);
         }
-
-
 
         private void BeginBinding(ElementNode element, Binding binding)
         {
@@ -92,6 +93,7 @@ namespace Spark.Compiler.NodeVisitors
                 var phrase = binding.Phrases.First();
                 ProcessPhrase(binding, phrase, element);
             }
+
             PushFrame(Nodes, new Frame { Binding = binding, Element = element, NestingLevel = FrameData.NestingLevel + 1 });
         }
 
@@ -136,7 +138,6 @@ namespace Spark.Compiler.NodeVisitors
             return binding.Phrases.SelectMany(p => p.Nodes);
         }
 
-
         private Binding MatchElementBinding(ElementNode node)
         {
             var bindingsForName = Context.Bindings.Where(binding => binding.ElementName == node.Name);
@@ -160,7 +161,6 @@ namespace Spark.Compiler.NodeVisitors
 
             return true;
         }
-
 
         private IEnumerable<Snippet> BuildSnippetsForNode(Binding binding, BindingNode node, ElementNode element)
         {

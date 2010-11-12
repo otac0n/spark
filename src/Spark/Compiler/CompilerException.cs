@@ -27,7 +27,6 @@ namespace Spark.Compiler
         public CompilerException(string message)
             : base(message)
         {
-
         }
             
         public CompilerException(string message, Position position)
@@ -44,7 +43,9 @@ namespace Spark.Compiler
         }
 
         public string Filename { get; set; }
+
         public int Line { get; set; }
+
         public int Column { get; set; }
     }
 }

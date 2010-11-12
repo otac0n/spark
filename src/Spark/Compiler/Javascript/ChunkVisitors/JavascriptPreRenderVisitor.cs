@@ -34,6 +34,7 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
         {
             _source = source;
         }
+
         protected override void Visit(GlobalVariableChunk chunk)
         {
             _source
@@ -74,6 +75,7 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
                 _source.Append(delimiter).Append(parameter.Name);
                 delimiter = ", ";
             }
+
             _source.AppendLine(") {var __output__ = new StringWriter(); OutputScope(__output__);");
             var codeVisitor = new JavascriptGeneratedCodeVisitor(_source);
             codeVisitor.Accept(chunk.Body);

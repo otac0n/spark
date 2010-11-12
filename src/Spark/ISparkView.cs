@@ -25,7 +25,9 @@ namespace Spark
     public interface ISparkView
     {
         void RenderView(TextWriter writer);
+
         Guid GeneratedViewId { get; }
+
         bool TryGetViewData(string name, out object value);
     }
 }

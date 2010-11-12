@@ -36,6 +36,7 @@ namespace Spark
     public interface ISparkExtension
     {
         void VisitNode(INodeVisitor visitor, IList<Node> body, IList<Chunk> chunks);
+
         void VisitChunk(IChunkVisitor visitor, OutputLocation location, IList<Chunk> body, StringBuilder output);
     }
 

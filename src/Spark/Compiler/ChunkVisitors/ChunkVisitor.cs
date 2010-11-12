@@ -63,7 +63,6 @@ namespace Spark.Compiler.ChunkVisitors
 
         protected override void Visit(UseImportChunk chunk)
         {
-            
         }
 
         protected override void Visit(ContentSetChunk chunk)
@@ -73,7 +72,6 @@ namespace Spark.Compiler.ChunkVisitors
 
         protected override void Visit(RenderSectionChunk chunk)
         {
-            
         }
 
         protected override void Visit(ViewDataChunk chunk)
@@ -112,7 +110,6 @@ namespace Spark.Compiler.ChunkVisitors
 
         protected override void Visit(ViewDataModelChunk chunk)
         {
-
         }
 
         protected override void Visit(ExtensionChunk chunk)

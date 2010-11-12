@@ -45,10 +45,12 @@ namespace Spark.Compiler
             {
                 return "\"\"";
             }
+            
             if (_parts.Count == 1)
             {
                 return _parts[0];    
             }
+
             return "string.Concat(" + string.Join(",", _parts.ToArray()) + ")";
         }
 
@@ -75,5 +77,4 @@ namespace Spark.Compiler
             return text.Replace("\\", "\\\\").Replace("\t", "\\t").Replace("\r", "\\r").Replace("\n", "\\n").Replace("\"", "\\\"");
         }
     }
-
 }

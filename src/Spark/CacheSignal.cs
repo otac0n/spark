@@ -45,6 +45,7 @@ namespace Spark
                     _enabled = true;
                 }
             }
+
             remove
             {
                 lock (this)

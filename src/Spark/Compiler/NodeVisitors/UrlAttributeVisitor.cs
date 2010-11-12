@@ -54,8 +54,6 @@ namespace Spark.Compiler.NodeVisitors
             };
         }
 
-
-
         class ElementSpecs
         {
             private readonly string name;
@@ -111,10 +109,6 @@ namespace Spark.Compiler.NodeVisitors
 
             var expr = "SiteResource(\"" + first.Text + "\")";
             attribute.Nodes[0] = new ExpressionNode(expr) { OriginalNode = first };
-
-            
         }
-
-        
     }
 }
