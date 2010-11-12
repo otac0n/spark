@@ -36,7 +36,7 @@ namespace Spark.Compiler
         {
             var count = 0;
             var enumerator = enumerable.GetEnumerator();
-            while(enumerator.MoveNext())
+            while (enumerator.MoveNext())
                 ++count;
             return count;
         }

@@ -44,9 +44,9 @@ namespace Spark.FileSystem
 
         private void LoadAllResources(Assembly assembly, string path)
         {
-            foreach(var resourceName in assembly.GetManifestResourceNames().Where(name=>name.StartsWith(path + ".", StringComparison.InvariantCultureIgnoreCase)))
+            foreach (var resourceName in assembly.GetManifestResourceNames().Where(name => name.StartsWith(path + ".", StringComparison.InvariantCultureIgnoreCase)))
             {
-                using(var stream = assembly.GetManifestResourceStream(resourceName))
+                using (var stream = assembly.GetManifestResourceStream(resourceName))
                 {
                     var contents = new byte[stream.Length];
                     stream.Read(contents, 0, contents.Length);

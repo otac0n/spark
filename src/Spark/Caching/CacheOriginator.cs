@@ -51,7 +51,7 @@ namespace Spark.Caching
                 writerOriginator.BeginMemento();
             }
 
-            _priorOnceTable = _state.OnceTable.ToDictionary(kv=>kv.Key, kv=>kv.Value);
+            _priorOnceTable = _state.OnceTable.ToDictionary(kv => kv.Key, kv => kv.Value);
 
             // capture current output also if it's not locked into a named output at the moment
             // this could be a case in view's output, direct to network, or various macro or content captures
@@ -84,7 +84,7 @@ namespace Spark.Caching
             foreach (var content in _priorContent)
             {
                 var textMemento = content.Value.EndMemento();
-                if (textMemento.Written.Any(part=>string.IsNullOrEmpty(part) == false))
+                if (textMemento.Written.Any(part => string.IsNullOrEmpty(part) == false))
                     memento.Content.Add(content.Key, textMemento);
             }
 

@@ -35,7 +35,7 @@ namespace Spark.Configuration
 
         public void Add(string name)
         {
-            base.BaseAdd(new ViewFolderElement { Name = name });
+            this.BaseAdd(new ViewFolderElement { Name = name });
         }
     }
 }

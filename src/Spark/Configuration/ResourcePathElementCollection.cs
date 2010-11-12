@@ -40,7 +40,7 @@ namespace Spark.Configuration
 
         public void Add(string match, string location, bool stop)
         {
-            base.BaseAdd(new ResourcePathElement { Match = match, Location = location, Stop = stop});
+            this.BaseAdd(new ResourcePathElement { Match = match, Location = location, Stop = stop });
         }
     }
 }

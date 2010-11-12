@@ -73,7 +73,7 @@ namespace Spark.Spool
             _readonly = true;
             _next = new SpoolPage(pages);
             var scan = _next;
-            while(scan._next != null)
+            while (scan._next != null)
                 scan = scan._next;
             return scan;
         }

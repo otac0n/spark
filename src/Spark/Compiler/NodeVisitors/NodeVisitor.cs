@@ -32,7 +32,7 @@ namespace Spark.Compiler.NodeVisitors
         public FrameData Data { get; set; }
     }
 
-    public abstract class NodeVisitor<TFrameData> : AbstractNodeVisitor where TFrameData:class, new()
+    public abstract class NodeVisitor<TFrameData> : AbstractNodeVisitor where TFrameData : class, new()
     {
         private Frame<TFrameData> _frame;
 

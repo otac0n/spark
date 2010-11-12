@@ -57,7 +57,7 @@ namespace Spark.Compiler.ChunkVisitors
                 return;
 
             var codeString = code.ToString();
-            foreach(var entry in _entries)
+            foreach (var entry in _entries)
             {
                 if (entry.Detected)
                     continue;

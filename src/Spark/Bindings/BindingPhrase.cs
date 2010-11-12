@@ -27,7 +27,7 @@ namespace Spark.Bindings
         {
             Expression,
             Statement,
-        };
+        }
 
         public PhraseType Type { get; set; }
         public IList<BindingNode> Nodes { get; set; }

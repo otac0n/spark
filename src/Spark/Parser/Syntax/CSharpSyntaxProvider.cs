@@ -37,7 +37,7 @@ namespace Spark.Parser.Syntax
             var expression = Ch("${").And(Rep1(ChNot('}'))).And(Ch('}'))
                 .Build(hit => (Node)new ExpressionNode(new string(hit.Left.Down.ToArray())));
 
-            var statement = Opt(Ch('\r')).And(Ch('\n')).And(Rep(Ch(char.IsWhiteSpace))).And(Ch("//:")).And(Rep(ChNot('\r','\n')))
+            var statement = Opt(Ch('\r')).And(Ch('\n')).And(Rep(Ch(char.IsWhiteSpace))).And(Ch("//:")).And(Rep(ChNot('\r', '\n')))
                 .Build(hit => (Node)new StatementNode(new string(hit.Down.ToArray())));
 
             var plaincode = Rep1(Ch(c => true).Unless(statement).Unless(expression)).Build(hit => (Node)new TextNode(hit));

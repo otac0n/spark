@@ -33,13 +33,13 @@ namespace Spark.Compiler.NodeVisitors
         {
             _specs = new[] 
             {
-                new ElementSpecs("a","href"),
+                new ElementSpecs("a", "href"),
                 new ElementSpecs("applet", "codebase"),
                 new ElementSpecs("area", "href"),
                 new ElementSpecs("base", "href"),
                 new ElementSpecs("blockquote", "cite"),
                 new ElementSpecs("body", "background"),
-                new ElementSpecs("del","cite"),
+                new ElementSpecs("del", "cite"),
                 new ElementSpecs("form", "action"),
                 new ElementSpecs("frame", "longdesc", "src"),
                 new ElementSpecs("head", "profile"),
@@ -47,7 +47,7 @@ namespace Spark.Compiler.NodeVisitors
                 new ElementSpecs("img", "longdesc", "src", "usemap"),
                 new ElementSpecs("input", "src", "usemap"),
                 new ElementSpecs("ins", "cite"),
-                new ElementSpecs("link","href"),
+                new ElementSpecs("link", "href"),
                 new ElementSpecs("object", "classid", "codebase", "data", "usemap"),
                 new ElementSpecs("script", "src"),
                 new ElementSpecs("q", "cite") 

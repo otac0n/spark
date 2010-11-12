@@ -35,7 +35,7 @@ namespace Spark
         public string GetResourcePath(string siteRoot, string path)
         {
             var effectivePath = path;
-            foreach(var mapping in _settings.ResourceMappings)
+            foreach (var mapping in _settings.ResourceMappings)
             {
                 if (!mapping.IsMatch(effectivePath)) 
                     continue;

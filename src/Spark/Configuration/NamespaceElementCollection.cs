@@ -35,7 +35,7 @@ namespace Spark.Configuration
 
         public void Add(string ns)
         {
-            base.BaseAdd(new NamespaceElement { Namespace = ns });
+            this.BaseAdd(new NamespaceElement { Namespace = ns });
         }
     }
 }

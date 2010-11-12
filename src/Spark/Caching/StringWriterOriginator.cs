@@ -51,7 +51,7 @@ namespace Spark.Caching
 
         public override void DoMemento(TextWriterMemento memento)
         {
-            foreach(var written in memento.Written)
+            foreach (var written in memento.Written)
                 _writer.Write(written);
         }
     }

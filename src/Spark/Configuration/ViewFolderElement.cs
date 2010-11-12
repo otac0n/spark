@@ -58,7 +58,7 @@ namespace Spark.Configuration
             set { this["subfolder"] = value; }
         }
 
-        public IDictionary<string, string> Parameters { get; set;}
+        public IDictionary<string, string> Parameters { get; set; }
 
 
         protected override bool OnDeserializeUnrecognizedAttribute(string name, string value)

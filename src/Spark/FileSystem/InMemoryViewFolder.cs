@@ -36,7 +36,7 @@ namespace Spark.FileSystem
 
         private static byte[] GetBytes(string value)
         {
-            using(var stream = new MemoryStream())
+            using (var stream = new MemoryStream())
             {
                 using (var writer = new StreamWriter(stream))
                 {

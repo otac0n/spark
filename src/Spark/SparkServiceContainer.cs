@@ -48,16 +48,16 @@ namespace Spark
         readonly Dictionary<Type, Func<ISparkServiceContainer, object>> _defaults =
             new Dictionary<Type, Func<ISparkServiceContainer, object>>
                 {
-                    {typeof (ISparkSettings), c => ConfigurationManager.GetSection("spark") ?? new SparkSettings()},
-                    {typeof (ISparkViewEngine), c => new SparkViewEngine(c.GetService<ISparkSettings>())},
-                    {typeof (ISparkLanguageFactory), c => new DefaultLanguageFactory()},
-                    {typeof (ISparkSyntaxProvider), c => new DefaultSyntaxProvider(c.GetService<ISparkSettings>())},
-                    {typeof (IViewActivatorFactory), c => new DefaultViewActivator()},
-                    {typeof (IResourcePathManager), c => new DefaultResourcePathManager(c.GetService<ISparkSettings>())},
-                    {typeof (ITemplateLocator), c => new DefaultTemplateLocator()},
-                    {typeof (IBindingProvider), c => new DefaultBindingProvider()},
-                    {typeof (IViewFolder), CreateDefaultViewFolder},
-                    {typeof (ICompiledViewHolder), c => new CompiledViewHolder()},
+                    {typeof(ISparkSettings), c => ConfigurationManager.GetSection("spark") ?? new SparkSettings()},
+                    {typeof(ISparkViewEngine), c => new SparkViewEngine(c.GetService<ISparkSettings>())},
+                    {typeof(ISparkLanguageFactory), c => new DefaultLanguageFactory()},
+                    {typeof(ISparkSyntaxProvider), c => new DefaultSyntaxProvider(c.GetService<ISparkSettings>())},
+                    {typeof(IViewActivatorFactory), c => new DefaultViewActivator()},
+                    {typeof(IResourcePathManager), c => new DefaultResourcePathManager(c.GetService<ISparkSettings>())},
+                    {typeof(ITemplateLocator), c => new DefaultTemplateLocator()},
+                    {typeof(IBindingProvider), c => new DefaultBindingProvider()},
+                    {typeof(IViewFolder), CreateDefaultViewFolder},
+                    {typeof(ICompiledViewHolder), c => new CompiledViewHolder()},
                 };
 
 

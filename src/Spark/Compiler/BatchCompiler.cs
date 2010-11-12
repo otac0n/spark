@@ -158,7 +158,7 @@ namespace Spark.Compiler
                 {
                     using (var reader = new StringReader(sourceCodeItem))
                     {
-                        for (int lineNumber = 1; ; ++lineNumber)
+                        for (int lineNumber = 1;; ++lineNumber)
                         {
                             var line = reader.ReadLine();
                             if (line == null)

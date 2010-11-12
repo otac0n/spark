@@ -88,7 +88,7 @@ namespace Spark.Compiler.Javascript
             source.Append("OutputScope._frame = OutputScope._frame._frame;");
             source.AppendLine("};");
 
-            foreach(var chunks in allResources)
+            foreach (var chunks in allResources)
             {
                 preRenderVisitor.Accept(chunks);
             }
