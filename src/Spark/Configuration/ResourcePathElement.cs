@@ -41,7 +41,7 @@ namespace Spark.Configuration
         [ConfigurationProperty("stop")]
         public bool Stop
         {
-            get { return (bool) this["stop"]; }
+            get { return (bool)this["stop"]; }
             set { this["stop"] = value; }
         }
     }

@@ -39,11 +39,11 @@ namespace Spark.Compiler.NodeVisitors
 
             this.specialNodeMap = new Dictionary<string, Action<SpecialNode, SpecialNodeInspector>>
                                   {
-                                      {"for", VisitFor},
-                                      {"test", VisitIf},
-                                      {"if", VisitIf},
-                                      {"else", VisitIf},
-                                      {"elseif", VisitIf},
+                                      { "for", VisitFor },
+                                      { "test", VisitIf },
+                                      { "if", VisitIf },
+                                      { "else", VisitIf },
+                                      { "elseif", VisitIf },
                                   };
         }
 
@@ -75,7 +75,7 @@ namespace Spark.Compiler.NodeVisitors
 
                 var newNode = new SpecialNode(new ElementNode("if", new[] { new AttributeNode("condition", code) }, false))
                 {
-                    Body = new [] {
+                    Body = new[] {
                         new TextNode(specialNode.Element.PreceedingWhitespace),
                     },
                 };

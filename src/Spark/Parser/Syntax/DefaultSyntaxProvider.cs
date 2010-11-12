@@ -89,9 +89,9 @@ namespace Spark.Parser.Syntax
                         .Replace("&", "&amp;")
                         .Replace("<", "&lt;")
                         .Replace(">", "&gt;");
-                    return new[] {new TextNode(encoded)};
+                    return new[] { new TextNode(encoded) };
                 case "html":
-                    return new[] {new TextNode(sourceContext.Content)};
+                    return new[] { new TextNode(sourceContext.Content) };
             }
 
 

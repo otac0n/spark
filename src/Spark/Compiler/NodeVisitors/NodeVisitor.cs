@@ -43,7 +43,7 @@ namespace Spark.Compiler.NodeVisitors
 
         public void PushFrame(IList<Node> nodes, TFrameData frameData)
         {
-            var frame = new Frame<TFrameData> {Data = frameData, Nodes = nodes, PriorFrame = _frame};
+            var frame = new Frame<TFrameData> { Data = frameData, Nodes = nodes, PriorFrame = _frame };
             _frame = frame;
         }
 

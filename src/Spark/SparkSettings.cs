@@ -144,7 +144,7 @@ namespace Spark
 
         public SparkSettings AddResourceMapping(string match, string replace, bool stopProcess)
         {
-            _resourceMappings.Add(new SimpleResourceMapping { Match = match, Location = replace, Stop = stopProcess});
+            _resourceMappings.Add(new SimpleResourceMapping { Match = match, Location = replace, Stop = stopProcess });
             return this;
         }
 

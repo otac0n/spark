@@ -29,7 +29,7 @@ namespace Spark.Caching
         public static TextWriterOriginator Create(TextWriter writer)
         {
             if (writer is SpoolWriter)
-                return new SpoolWriterOriginator((SpoolWriter) writer);
+                return new SpoolWriterOriginator((SpoolWriter)writer);
             if (writer is StringWriter)
                 return new StringWriterOriginator((StringWriter)writer);
             throw new InvalidCastException("writer is unknown type " + writer.GetType().FullName);

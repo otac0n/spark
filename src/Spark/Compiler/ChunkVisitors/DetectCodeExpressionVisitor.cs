@@ -46,7 +46,7 @@ namespace Spark.Compiler.ChunkVisitors
 
         public Entry Add(string expression)
         {
-            var entry = new Entry {Expression = expression};
+            var entry = new Entry { Expression = expression };
             _entries.Add(entry);
             return entry;
         }

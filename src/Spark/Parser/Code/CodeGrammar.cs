@@ -126,7 +126,7 @@ namespace Spark.Parser.Code
                 .And(Snip(identifierOrKeyword))
                 .And(Snip(Rep(dotProperty)))
                 .And(Opt(formatAppendage))
-                .Build(hit => (IList<Snippet>) new Snippets("Eval(\"")
+                .Build(hit => (IList<Snippet>)new Snippets("Eval(\"")
                                                    .Concat(hit.Left.Left.Down)
                                                    .Concat(hit.Left.Down)
                                                    .Concat(new Snippets("\""))
@@ -156,8 +156,8 @@ namespace Spark.Parser.Code
                 .Or(keyword)
                 .Or(SpecialCharCast)
                 .Or(oneLineComment)
-                .Or(multiLineComment)
-                )).Or(EmptySnip());
+                .Or(multiLineComment)))
+              .Or(EmptySnip());
 
 
             Expression = ExpressionTerms.Build(hit => new Snippets(hit));

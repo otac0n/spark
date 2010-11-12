@@ -34,7 +34,7 @@ namespace Spark.Caching
 
         public override TextWriterMemento CreateMemento()
         {
-            return new TextWriterMemento {Written = new[] {_writer.ToString()}};
+            return new TextWriterMemento { Written = new[] { _writer.ToString() } };
         }
 
         public override void BeginMemento()

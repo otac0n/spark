@@ -29,7 +29,7 @@ namespace Spark.Bindings
         public BindingGrammar()
         {
             //[4]   	NameChar	   ::=   	 Letter | Digit | '.' | '-' | '_' | ':' | CombiningChar | Extender  
-            var NameChar = Ch(char.IsLetterOrDigit).Or(Ch('.', '-', '_', ':'))/*.Or(CombiningChar).Or(Extener)*/;
+            var NameChar = Ch(char.IsLetterOrDigit).Or(Ch('.', '-', '_', ':')); // .Or(CombiningChar).Or(Extender)
 
             //[5]   	Name	   ::=   	(Letter | '_' | ':') (NameChar)*
             var Name =

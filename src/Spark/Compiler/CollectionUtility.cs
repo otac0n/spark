@@ -27,7 +27,7 @@ namespace Spark.Compiler
 {
     public static class CollectionUtility
     {
-        public  static int Count<T>(IEnumerable<T> enumerable)
+        public static int Count<T>(IEnumerable<T> enumerable)
         {
             return enumerable.Count();
         }

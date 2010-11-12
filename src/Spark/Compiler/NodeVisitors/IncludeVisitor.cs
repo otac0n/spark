@@ -149,7 +149,7 @@ namespace Spark.Compiler.NodeVisitors
         {
             if (FrameData.Mode == Mode.SuccessfulInclude)
             {
-                PushFrame(Nodes, new Frame {Mode = Mode.IgnoringFallback});
+                PushFrame(Nodes, new Frame { Mode = Mode.IgnoringFallback });
                 return;
             }
             if (FrameData.Mode != Mode.FailedInclude)
@@ -157,7 +157,7 @@ namespace Spark.Compiler.NodeVisitors
                 throw new CompilerException("<fallback> only valid inside <include>");
             }
             FrameData.FallbackUsed = true;
-            PushFrame(FrameData.NodesForFallback, new Frame {Mode = Mode.NormalContent});
+            PushFrame(FrameData.NodesForFallback, new Frame { Mode = Mode.NormalContent });
         }
 
         void EndFallback()

@@ -76,7 +76,7 @@ namespace Spark.Compiler.NodeVisitors
             else if (node is ConditionNode)
                 Visit((ConditionNode)node);
             else if (node is XMLDeclNode)
-                Visit((XMLDeclNode) node);
+                Visit((XMLDeclNode)node);
             else if (node is ProcessingInstructionNode)
                 Visit((ProcessingInstructionNode)node);
             else

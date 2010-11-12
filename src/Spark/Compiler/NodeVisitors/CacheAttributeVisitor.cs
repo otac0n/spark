@@ -56,7 +56,7 @@ namespace Spark.Compiler.NodeVisitors
             var attrSignal =
                 ExtractFakeAttribute(node, "cache.signal", "signal");
 
-            var attrNodes = new[] { attrKey, attrExpires, attrSignal }.Where(x => x != null).ToList();
+            var attrNodes = new[] { attrKey, attrExpires, attrSignal } .Where(x => x != null).ToList();
 
             var fakeElement = new ElementNode("cache", attrNodes, false) { OriginalNode = attr };
             return new SpecialNode(fakeElement);

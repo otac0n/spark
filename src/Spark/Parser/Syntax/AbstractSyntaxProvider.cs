@@ -45,7 +45,7 @@ namespace Spark.Parser.Syntax
             {
                 string fileName = viewPath;
                 if (stream is FileStream)
-                    fileName = ((FileStream) stream).Name;
+                    fileName = ((FileStream)stream).Name;
 
                 using (TextReader reader = new StreamReader(stream))
                 {

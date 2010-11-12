@@ -71,7 +71,7 @@ namespace Spark.Compiler.Javascript.ChunkVisitors
             var termDelimiter = ws.And(Ch(',')).And(ws);
 
             var terms = term.And(Rep(termDelimiter.And(term)))
-                .Build(hit => new[] { hit.Left }.Concat(hit.Down.Select(x => x.Down)));
+                .Build(hit => new[] { hit.Left } .Concat(hit.Down.Select(x => x.Down)));
 
             var anonymousType = Ch("new").And(ws).And(Ch('{')).And(terms).And(Ch('}'))
                 .Build(hit => "{" + string.Join(",", hit.Left.Down.ToArray()) + "}");

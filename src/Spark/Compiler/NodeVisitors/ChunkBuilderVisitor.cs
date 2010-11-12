@@ -87,24 +87,24 @@ namespace Spark.Compiler.NodeVisitors
             Chunks = new List<Chunk>();
             _specialNodeMap = new Dictionary<string, Action<SpecialNode, SpecialNodeInspector>>
                                   {
-                                      {"var", VisitVar},
-                                      {"def", VisitVar},
-                                      {"default", VisitDefault},
-                                      {"global", (n, i) => VisitGlobal(n)},
-                                      {"viewdata", (n, i) => VisitViewdata(i)},
-                                      {"set", (n, i) => VisitSet(i)},
-                                      {"for", VisitFor},
-                                      {"test", VisitIf},
-                                      {"if", VisitIf},
-                                      {"else", (n, i) => VisitElse(i)},
-                                      {"elseif", VisitElseIf},
-                                      {"content", (n, i) => VisitContent(i)},
-                                      {"use", VisitUse},
-                                      {"macro", (n, i) => VisitMacro(i)},
-                                      {"render", VisitRender},
-                                      {"section", VisitSection},
-                                      {"cache", VisitCache},
-                                      {"markdown", VisitMarkdown}
+                                      { "var", VisitVar },
+                                      { "def", VisitVar },
+                                      { "default", VisitDefault },
+                                      { "global", (n, i) => VisitGlobal(n) },
+                                      { "viewdata", (n, i) => VisitViewdata(i) },
+                                      { "set", (n, i) => VisitSet(i) },
+                                      { "for", VisitFor },
+                                      { "test", VisitIf },
+                                      { "if", VisitIf },
+                                      { "else", (n, i) => VisitElse(i) },
+                                      { "elseif", VisitElseIf },
+                                      { "content", (n, i) => VisitContent(i) },
+                                      { "use", VisitUse },
+                                      { "macro", (n, i) => VisitMacro(i) },
+                                      { "render", VisitRender },
+                                      { "section", VisitSection },
+                                      { "cache", VisitCache },
+                                      { "markdown", VisitMarkdown }
                                   };
         }
 
